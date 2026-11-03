@@ -20,6 +20,8 @@ Work is split across two machines, because each is good at different things:
 - Spell names exactly as he gives them (e.g. his coworker is "Aron"). Ask if a name or URL is uncertain rather than guessing.
 - Measure before saying something is done or broken: frame counts, durations, loudness, peaks, still frames. He listens closely; one false "the audio is silent" report cost trust.
 - State costs of paid API calls (ElevenLabs) and prefer the free option when quality is close.
+- Keep answers short and plain, especially when he is frustrated: what went wrong in one line, the fix, one clear question. No tables of options he didn't ask for.
+- Follow this skill's choices even when an old file from an earlier approach is lying around; re-check the voice source before every final render.
 
 ## Before starting a new video, collect
 
@@ -52,21 +54,25 @@ ElevenLabs Scribe (`eleven_scribe_v1`) through Executor (`tools["elevenlabs-mcp"
 - Send a short list of timecodes worth checking when sending a rough cut.
 
 ### 5. Audio
-Voice cleanup "option C" (free; Philip preferred it to ElevenLabs voice isolation, which costs ~$5 per 25 min take):
+**Voice source: the raw Blue Yeti track (OBS track 3) — always.** Philip compared it side by side and chose it.
+- **Never use ElevenLabs voice isolation.** It makes his voice garbled/warbly; a whole 4K video had to be redone because of it. Do not reuse an old isolated file "because it exists".
+- When comparing voice options, compare **voice to voice, untouched** (raw Yeti vs raw Osmo, same moment, 15 s each). Never add game audio or processing to only one side of a comparison; say exactly what each clip contains.
+
+**Minimal processing (approved):**
 ```
-highpass=f=80,afftdn=nr=12:nf=-50:tn=1,equalizer=f=250:t=q:w=1:g=-2,equalizer=f=4000:t=q:w=1:g=2,deesser=i=0.4
+highpass=f=80, afftdn=nr=6:nf=-55            # rumble + light noise reduction only
+× transcript gate mask (40 ms fades)          # mutes gaps between sentences and garbled/bleed lines
+volume=+16..22dB (match speech level), acompressor=threshold=0.12:ratio=2:attack=10:release=200:knee=6,
+alimiter=limit=0.8:attack=5:release=80:level=disabled
 ```
-Then:
-- Gate the voice with a mask from the transcript lines (40 ms fades); mute lines with game bleed.
-- Game: `dynaudnorm=f=400:g=31:p=0.9:m=6`, about -2 dB, ducked under voice with `sidechaincompress=threshold=0.03:ratio=4:attack=30:release=400`.
-- **Keep everything in float (`pcm_f32le`) until the final AAC.** 16-bit intermediates clip silently.
-- After the big voice gain (~+13 dB), add a gentle compressor and lookahead limiter, not just gain:
-  `volume=13.1dB,acompressor=threshold=0.25:ratio=3:attack=8:release=150:knee=4,alimiter=limit=0.7:attack=4:release=60:level=disabled`
-  Why: the voice peaked at -3.6 dBFS, so +13 dB hard-clipped 10% of speech and Philip heard it as distortion in the 4K file.
-- **Always `level=disabled` on `alimiter`.** The default auto-level scales the output back up to 0 dBFS, undoing the limiter.
-- Loudness: **-16 LUFS** integrated, peaks ≤ -1 dBFS, done as plain gain + `alimiter=limit=0.84:attack=5:release=80:level=disabled`. -14 LUFS forced too much limiting on speech.
-- Mix SFX from the overlay webms with `adelay`, `amix=normalize=0`, and map only the labeled output (`-map "[o]"`), or a stray video stream from the webm gets into the AAC.
-- Check every audio deliverable: `astats` Peak count / Flat factor (clipping shows as thousands of peak samples and a non-zero flat factor) and `ebur128=peak=true`.
+- No EQ and no de-esser by default. The older "option C" (`afftdn=nr=12:tn=1` adaptive, EQ −2 dB @250 Hz / +2 dB @4 kHz, de-esser, 3:1 compression) was "better but not perfect" — the strong adaptive noise reduction thins the voice.
+- Game: `dynaudnorm=f=400:g=31:p=0.9:m=6`, about −2 to −4 dB, ducked under voice with `sidechaincompress=threshold=0.03:ratio=4:attack=30:release=400`.
+- **Keep everything in float (`pcm_f32le`) until the final AAC.** 16-bit intermediates clip silently. Lesson: +13 dB on a voice peaking at −3.6 dBFS hard-clipped 10% of speech.
+- **Always `level=disabled` on `alimiter`** — the default auto-level pushes peaks back to 0 dBFS.
+- Loudness: **−16 LUFS** per segment, as plain gain + `alimiter=limit=0.75:attack=5:release=80:level=disabled` (AAC encoding overshoots ~1.3 dB, so 0.84 gave +0.4 dBFS peaks).
+- Mix SFX from the overlay webms with `adelay`, `amix=normalize=0`, and map only the labeled output (`-map "[o]"`).
+- Check every deliverable: `astats` Peak count / Flat factor (clipping) and `ebur128=peak=true`. A clean final file does **not** prove the mix wasn't clipped earlier — check the pre-normalization mix too.
+- **Any change to voice processing gets a preview first:** the intro (talking head) with the new audio, as a short video. Apply to the whole video only after he approves, then swap audio only (remux).
 
 ### 6. Graphics (Remotion, container)
 - Remotion 4.x project with fonts from @fontsource (Silkscreen for pixel games, Inter, Cormorant Garamond). Load the official remotion skills if present.
@@ -113,7 +119,7 @@ What worked:
 2. **Render a still of the title card** (`npx remotion still … <Intro comp> --frame=<after the animation settles>`) and copy its layout. For Samsara that was LET'S PLAY / samsara / line / KEEP THE FIRE ALIVE; for PDX Punk the neon PDXPUNK logo PNG, "A PORTLAND NOIR MURDER MYSTERY" in Silkscreen and the lime "LET'S PLAY · HALLOWEEN" pill.
 3. **Options from Canva** (optional, when he asks for Canva). `generate-design` with `design_type: youtube_thumbnail` and a detailed query describing the video's own title card (colors, fonts, layout, tagline) returns 4 candidates. The candidate thumbnail URLs cannot be fetched; to *see* them, `create-design-from-candidate` and then `read-design` with `fields: ["design_content","thumbnails"]` (this also gives element positions, fonts and colors). Send him the candidate links and let him pick; he may combine (e.g. layout from one, glow from another).
 4. **Know Canva's limits here.**
-   - File uploads (`create-upload-url` → POST) and export downloads (`export-download.canva.com`) are blocked by the network allowlist (`www.canva.com`) from both the container and the Mac, so real frames can't go into a Canva design unless he allows that domain or drags the files in himself.
+   - File uploads (`create-upload-url` → POST) and export downloads are blocked by the network allowlist (`www.canva.com`, `export-download.canva.com`) from both the container and the Mac, so real frames can't go into a Canva design unless he allows that domain or drags the files in himself.
    - The edit API cannot add text effects (glow, shadow) or change font family; glow is one click in Canva (Effects → Glow) if he edits there.
    - Cancel any editing transaction you open just to read a design.
 5. **Build the final as HTML/CSS → PNG** with Playwright (1280×720 page, `deviceScaleFactor: 2` → 2560×1440), matching the title card (and any Canva variant he picked):
@@ -125,8 +131,10 @@ What worked:
 8. **Deliver** the PNG to `~/Movies/<video dir>/thumb/` and send a JPG preview in chat; iterate on the preview (version numbers v1, v2…), not on a Canva design.
 
 ## Moving files between the container and the Mac
-- Container → Mac: put the file under `/mnt/user-data/outputs/`, then commit it. Max ~25 MB per file (26.6 MB was rejected with HTTP 400); re-encode (e.g. AAC 128k for long rough-cut audio) or split bigger files.
-- Overwriting a file under the same name can deliver a stale copy. Use a new filename (e.g. `_v2`) for changed files and verify on the Mac by measuring the file (loudness, duration), not by trusting the upload.
+- Container → Mac: put the file under `/mnt/user-data/outputs/`, then commit it. Max ~25 MB per file (26.6 MB was rejected with HTTP 400).
+- **The transfer rewrites media files** (an .m4a arrived ~6 KB bigger with a changed header). **Gzip media before committing** and gunzip on the Mac; then the bytes arrive exactly. Verify with `md5sum` on both sides.
+- For files over 25 MB: encode **one** file, gzip it, `split -b 17000000` the .gz, commit the parts, `cat parts | gunzip` on the Mac. **Never split audio into separately encoded halves** — the second half's encoder padding inserted a 10.7 ms glitch at the join and shifted everything after it.
+- Overwriting a file under the same name can deliver a stale copy. Use a new filename (e.g. `_v2`) for changed files and verify on the Mac (md5, duration, loudness).
 - Mac → container: stage files (for stills to look at, short clips to send in chat).
 - Deleting files in connected folders is off by default; write new names instead of relying on `rm`, and clean up stale files from lists before concatenating.
 - Small sidecar text files: do not rely on `read` for files without a trailing newline; set values directly.
