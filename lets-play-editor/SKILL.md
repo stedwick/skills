@@ -13,6 +13,8 @@ Work is split across two machines, because each is good at different things:
 
 ## How Philip wants to work
 
+- **Keep this skill up to date as we go, without being asked.** Whenever he gives feedback, corrects something or states a preference about editing, add it to this skill right away: edit `~/src/skills/lets-play-editor/SKILL.md`, commit it in `~/src/skills`, and propose the same full text to his Claude account. Mention it in one line.
+
 - **Preview before doing the whole thing.** This is the most important rule, and he has had to repeat it. For every change, fix or new idea, first send the smallest thing that lets him judge it: a 10–40 s clip of only the changed moment, an audio before/after (same 20 s twice, separated by 1.5 s of silence), or a still frame. Do the full job only after he says yes. The full 4K render happens once, at the end, when he asks for it.
 - When one segment changes, redo only that segment; when only audio changes, remux (never re-render video).
 - Report progress with 💻 (doing) ✅ (done) ⏳ (to do) ❌ (blocker) 🙋‍♂️ (needs you). Succinct bullets, simplified technical English.
@@ -50,6 +52,7 @@ ElevenLabs Scribe (`eleven_scribe_v1`) through Executor (`tools["elevenlabs-mcp"
 - Frame-quantized at 30 fps; audio cut at 1600 samples/frame (48 kHz) so audio and video match exactly. Short (10 ms) fades at each audio join prevent clicks.
 - Structure: **tease** (best 6–10 s hook from the gameplay) → **title card** → **talk** (full-screen facecam intro, best take) → **transition** (facecam eases into bubble) → **main** (gameplay + bubble) → **end card**.
 - Remove ums, stutters, false starts, dead air, lines garbled by game-voice bleed. Keep genuine reactions and the natural ending. Pick the best of repeated intro takes.
+- **Don't cut only around his voice — keep the action he talks about.** When he announces or describes something ("I'm going to cut down this pine tree", "let's go to the police station"), keep the footage until the action is visibly done (the tree falls, the new level loads), even if he is silent. Likewise keep a beat of lead-in before a reaction so viewers see what he reacts to. Typical padding: 0.5–1 s before a line, and after an action line 3–10 s or until the screen shows the result. Check the gameplay (scene changes, game audio, motion between frames), not just the transcript, before cutting a gap.
 - Pieces are `[startFrame, nFrames, layout]`; keep the EDL as JSON so every later step (video pieces, audio, overlay timing) reads the same source of truth.
 - Send a short list of timecodes worth checking when sending a rough cut.
 - **Moving a speech** (e.g. a spoiler warning to ~11:00): move the whole speech piece, not just its callout. Insert it at a natural pause (end of a sentence/scene), and merge tiny neighbouring fragments (<2 s) into one continuous piece so there are no jump cuts around it. The speech brings its own gameplay with it; mention that.
