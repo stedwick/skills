@@ -149,7 +149,7 @@ What worked:
 - Small sidecar text files: do not rely on `read` for files without a trailing newline; set values directly.
 
 ## Git and the sandbox
-- The device shell is a Linux sandbox, not his Mac's shell: it can't run GitButler (`but`) or push over SSH. For commits/landing in his repos (he uses GitButler), make the change and give him the exact command to run (e.g. `but commit -m "…"`). Plain `git` works only in repos that don't use GitButler (e.g. `~/src/skills`), and needs delete permission for git's lock files.
+- The device shell is a Linux sandbox, not his Mac's shell: it can't run GitButler (`but`) or push over SSH. For commits/landing in his repos (he uses GitButler), make the change and give him the exact command to run (e.g. `but commit -m "…"`). Plain `git` works only in repos that don't use GitButler (e.g. `~/src/skills`), and needs delete permission for git's lock files — request it before committing, or lock files are left behind.
 - Files sent with SendUserFile can land in a `Claude outputs/` folder inside his repos; make sure repos ignore it (`/Claude outputs/` in `.gitignore`).
 
 ## Deliverables
