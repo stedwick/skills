@@ -122,6 +122,8 @@ Philip's standing rules for every thumbnail (he had to repeat them):
 - **He must be in it: his face cut out** from the facecam, large, on the side opposite the text.
 - "Make it in Canva" means use Canva for layout/style options of *that* title card; the final is built with the real frame and cutout (see limits below).
 
+**Simple variant (when he hands over game screenshots and says "don't do the whole artwork"):** use his screenshot as is, UI included, with no title, text or darkening. Center-crop it to 16:9, upscale it with Lanczos to 2560×1440, and add only his face cutout, small (~560 px tall at 1440), flush in the bottom-right corner, with a faint cyan (`rgb(62,231,255)`) glow behind it. Fade the cutout's left edge where the shirt is cropped. Keep the cut edges flush with the frame: a drop shadow with padding left a gap, so don't use one. The PDX Punk cutout is saved at `~/Movies/lp2/thumb/face5_cutout.png`. Locally, rembg runs in a scratch `uv` venv (`rembg[cpu,cli]`, with `UV_CACHE_DIR` and `U2NET_HOME` inside the scratchpad).
+
 What worked:
 
 1. **Confirm which video** if he says "this video" and more than one is in progress (a wrong guess cost a round).
