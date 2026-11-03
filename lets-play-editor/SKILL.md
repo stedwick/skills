@@ -101,21 +101,28 @@ The device shell kills background jobs and each call is limited to ~180 s, so:
 
 ## Thumbnail
 
-Philip wants the thumbnail made "with Canva", but the result must use **real frames from the video and his real face**. What worked:
+Philip's standing rules for every thumbnail (he had to repeat them):
+- **Base it on the video's own title card** (the Remotion intro made for that video): same logo/wordmark, fonts, colors, tagline and tag. Do not invent a new style or headline ("WHO KILLED HIM?") — that was rejected.
+- **Background: a darkened real frame from the video** (an iconic, clean moment without dialogue boxes or UI).
+- **He must be in it: his face cut out** from the facecam, large, on the side opposite the text.
+- "Make it in Canva" means use Canva for layout/style options of *that* title card; the final is built with the real frame and cutout (see limits below).
+
+What worked:
 
 1. **Confirm which video** if he says "this video" and more than one is in progress (a wrong guess cost a round).
-2. **Direction from Canva.** `generate-design` with `design_type: youtube_thumbnail` and a detailed query describing the video's own title card (colors, fonts, layout, tagline) returns 4 candidates. The candidate thumbnail URLs cannot be fetched; to *see* them, `create-design-from-candidate` and then `read-design` with `fields: ["design_content","thumbnails"]` (this also gives element positions, fonts and colors). Send him the candidate links and let him pick; he may combine (e.g. layout from one, glow from another).
-3. **Know Canva's limits here.**
-   - File uploads (`create-upload-url` → POST) are blocked by the network allowlist (`www.canva.com`) from both the container and the Mac, so real frames can't go into a Canva design unless he allows that domain or drags the files in himself.
+2. **Render a still of the title card** (`npx remotion still … <Intro comp> --frame=<after the animation settles>`) and copy its layout. For Samsara that was LET'S PLAY / samsara / line / KEEP THE FIRE ALIVE; for PDX Punk the neon PDXPUNK logo PNG, "A PORTLAND NOIR MURDER MYSTERY" in Silkscreen and the lime "LET'S PLAY · HALLOWEEN" pill.
+3. **Options from Canva** (optional, when he asks for Canva). `generate-design` with `design_type: youtube_thumbnail` and a detailed query describing the video's own title card (colors, fonts, layout, tagline) returns 4 candidates. The candidate thumbnail URLs cannot be fetched; to *see* them, `create-design-from-candidate` and then `read-design` with `fields: ["design_content","thumbnails"]` (this also gives element positions, fonts and colors). Send him the candidate links and let him pick; he may combine (e.g. layout from one, glow from another).
+4. **Know Canva's limits here.**
+   - File uploads (`create-upload-url` → POST) and export downloads (`export-download.canva.com`) are blocked by the network allowlist (`www.canva.com`) from both the container and the Mac, so real frames can't go into a Canva design unless he allows that domain or drags the files in himself.
    - The edit API cannot add text effects (glow, shadow) or change font family; glow is one click in Canva (Effects → Glow) if he edits there.
    - Cancel any editing transaction you open just to read a design.
-4. **Build the final as HTML/CSS → PNG** with Playwright (1280×720 page, `deviceScaleFactor: 2` → 2560×1440), matching the chosen Canva layout:
+5. **Build the final as HTML/CSS → PNG** with Playwright (1280×720 page, `deviceScaleFactor: 2` → 2560×1440), matching the title card (and any Canva variant he picked):
    - Background: a real gameplay frame from the 4K source (make a contact sheet of candidate moments, pick the most iconic, e.g. Samsara's shipwreck beach at 1:20), darkened: `filter: brightness(.42) saturate(.85) blur(1.5px)` plus a radial vignette.
-   - Wordmark glow (from Canva option 4, amber): `color:#ffd79a; text-shadow:0 0 6px #ffb347,0 0 18px rgba(255,150,50,.9),0 0 42px rgba(255,120,30,.75),0 0 90px rgba(255,100,20,.55)`. Fonts via @fontsource (DM Serif Display matched Canva's bold serif; Inter for small caps).
+   - Wordmark glow (Samsara, amber, the look he liked from a Canva option): `color:#ffd79a; text-shadow:0 0 6px #ffb347,0 0 18px rgba(255,150,50,.9),0 0 42px rgba(255,120,30,.75),0 0 90px rgba(255,100,20,.55)`. Fonts via @fontsource (DM Serif Display matched Canva's bold serif; Inter for small caps). For a logo PNG, glow with `filter: drop-shadow(...)` in the game's colors.
    - Face on the side opposite the text, large, cut off at the bottom edge, with a soft warm light behind it for separation.
-5. **Face frame.** Contact sheet of ~8 frames from the talk/intro segment of the Osmo original; pick an expression that fits the game (skeptical for a murder mystery, excited/explaining for a survival game). Extract a 2000×2000 crop at full resolution.
-6. **Cutout.** `rembg` with **`isnet-general-use`** on the frame resized to ~1400 px: keeps real hair strands and clean edges around headphones and hands. `u2net_human_seg` flattened the hair and kept a patch of wall; `birefnet-portrait` runs out of memory in the 8 GB container. Where the cutout is cropped at a frame edge, fade the alpha over ~160 px so no hard line shows. Check the cutout on a bright contrasting color before compositing.
-7. **Deliver** the PNG to `~/Movies/<video dir>/thumb/` and send a JPG preview in chat; iterate on the preview (version numbers v1, v2…), not on a Canva design.
+6. **Face frame.** Contact sheet of ~8 frames from the talk/intro segment of the Osmo original; pick an expression that fits the game (skeptical for a murder mystery, excited/explaining for a survival game). Extract a 2000×2000 crop at full resolution.
+7. **Cutout.** `rembg` with **`isnet-general-use`** on the frame resized to ~1400 px: keeps real hair strands and clean edges around headphones and hands. `u2net_human_seg` flattened the hair and kept a patch of wall; `birefnet-portrait` runs out of memory in the 8 GB container. Where the cutout is cropped at a frame edge, fade the alpha over ~160 px so no hard line shows. Check the cutout on a bright contrasting color before compositing.
+8. **Deliver** the PNG to `~/Movies/<video dir>/thumb/` and send a JPG preview in chat; iterate on the preview (version numbers v1, v2…), not on a Canva design.
 
 ## Moving files between the container and the Mac
 - Container → Mac: put the file under `/mnt/user-data/outputs/`, then commit it. Max ~25 MB per file (26.6 MB was rejected with HTTP 400); re-encode (e.g. AAC 128k for long rough-cut audio) or split bigger files.
