@@ -52,6 +52,8 @@ ElevenLabs Scribe (`eleven_scribe_v1`) through Executor (`tools["elevenlabs-mcp"
 - Remove ums, stutters, false starts, dead air, lines garbled by game-voice bleed. Keep genuine reactions and the natural ending. Pick the best of repeated intro takes.
 - Pieces are `[startFrame, nFrames, layout]`; keep the EDL as JSON so every later step (video pieces, audio, overlay timing) reads the same source of truth.
 - Send a short list of timecodes worth checking when sending a rough cut.
+- **Moving a speech** (e.g. a spoiler warning to ~11:00): move the whole speech piece, not just its callout. Insert it at a natural pause (end of a sentence/scene), and merge tiny neighbouring fragments (<2 s) into one continuous piece so there are no jump cuts around it. The speech brings its own gameplay with it; mention that.
+- **Ending music:** let the game's ending music play ~3 s after the credits, then fade it out (~0.6 s) before the closing talk. Not the whole track.
 
 ### 5. Audio
 **Voice source: the raw Blue Yeti track (OBS track 3) — always.** Philip compared it side by side and chose it.
@@ -79,10 +81,14 @@ alimiter=limit=0.8:attack=5:release=80:level=disabled
 - Per video: **title card** (logo, ElevenLabs music `eleven_music_v2_5` ~$0.30/30 s, URL easing in ~1.7 s with a pop, 8 s), **lower-third callouts** when he mentions something ("Made by …", genre, "Play free in your browser – url", "Coming up next"), **end card** (Thanks for watching + play-this card + Watch-next card, ~11 s). Match colors to the game.
 - Callouts: transparent VP9 webm (`--codec=vp9 --image-format=png --pixel-format=yuva420p`). ffmpeg must decode them with `-c:v libvpx-vp9` placed before `-i`, or alpha is lost.
 - For 4K: `--scale=2` on 1080p comps, `--scale=3` on 720p comps.
+- Keep every callout's props (label, text, logo, duration) in one render script, so the 4K versions match the previews exactly.
+- A card that goes with a speech stays on screen for the whole speech (at least 10 s). Ease it in smoothly — no flicker (a flickering neon effect was rejected as "weird").
+- **URL cards:** when he says a URL (e.g. quillgamemaker.com, pdxpunkgame.com in the closing talk), show it at that word and keep it up until he stops talking; add a second row when he says the second URL.
+- When a Canva design can't be exported (blocked download), rebuild it in Remotion from the `read-design` thumbnail and animate it.
 - Transition `FaceToBubble` (36 frames = 1.2 s): game fades in while scaling 1.06→1; the facecam box moves from full frame to the bubble while its crop moves from the 16:9 face crop to the 4:3 head crop; corner radius grows; the ring fades in over the last 40%. Feed it two short clips cut from the sources (the last frames of the talk and the first frames of main). Its end frame must match the bubble used in the main pieces exactly, or there is a visible jump.
 
 ### 7. Layout
-- Talk/intro/outro: facecam full screen (16:9 crop around the face).
+- Talk/intro/outro: facecam full screen (16:9 crop around the face) — unless he is showing something on screen while talking (title screen, character select, a website): then show the gameplay with a **bigger facecam box** (PDX Punk: 320×240 at 720p, 960×720 at 4K) for the intro and the closing talk.
 - Gameplay: rounded facecam bubble (4:3 head crop) with a cyan ring (`rgb(62,231,255)`), placed where the game has no HUD. Ask Philip or look at stills. Samsara: middle-right, low enough that the minimap stays visible; pop-ups may be slightly covered.
 - Ring must overlap the video edge by a few pixels, so no gap shows at the rounded corners.
 
@@ -100,6 +106,7 @@ The device shell kills background jobs and each call is limited to ~180 s, so:
   Encode `libx264 -preset veryfast -crf 18 -pix_fmt yuv420p -r 30 -g 60 -an`. Speed: ~1.3 s per second of video; a 15 min video takes ~20 min.
 - Previews: same pipeline from proxies at 720p, `crf 24`. For quick sync/framing previews, cut 8 s clips straight from the sources with OBS track 1 audio.
 - Before the full 4K, render one 10 s test piece and send it for a sharpness and lip-sync check.
+- **Split pieces longer than ~40 s (1200 frames)** into consecutive sub-pieces for 4K (`007a`, `007b`, …); a 109 s piece blew the 170 s per-piece timeout. Splitting at exact frames is seamless.
 
 ### 9. Finish
 - Keep per-segment files: video-only `<seg>_v.mp4` and `<seg>_audio.m4a` for tease/talk/main, plus title/transition/end card. Mux each, then `-f concat -c copy -movflags +faststart` into `~/Movies/<Game> Let's Play - 4K.mp4`. Because of this layout, an audio fix is a ~2 min remux.
@@ -123,7 +130,7 @@ What worked:
    - The edit API cannot add text effects (glow, shadow) or change font family; glow is one click in Canva (Effects → Glow) if he edits there.
    - Cancel any editing transaction you open just to read a design.
 5. **Build the final as HTML/CSS → PNG** with Playwright (1280×720 page, `deviceScaleFactor: 2` → 2560×1440), matching the title card (and any Canva variant he picked):
-   - Background: a real gameplay frame from the 4K source (make a contact sheet of candidate moments, pick the most iconic, e.g. Samsara's shipwreck beach at 1:20), darkened: `filter: brightness(.42) saturate(.85) blur(1.5px)` plus a radial vignette.
+   - Background: a real gameplay frame from the 4K source (make a contact sheet of candidate moments, pick the most iconic, e.g. Samsara's shipwreck beach at 1:20). Darken it only if it is bright (`filter: brightness(.42) saturate(.85) blur(1.5px)` plus a radial vignette for Samsara's daytime beach). **A night scene stays at full brightness** (PDX Punk: just `blur(1px)`, no vignette).
    - Wordmark glow (Samsara, amber, the look he liked from a Canva option): `color:#ffd79a; text-shadow:0 0 6px #ffb347,0 0 18px rgba(255,150,50,.9),0 0 42px rgba(255,120,30,.75),0 0 90px rgba(255,100,20,.55)`. Fonts via @fontsource (DM Serif Display matched Canva's bold serif; Inter for small caps). For a logo PNG, glow with `filter: drop-shadow(...)` in the game's colors.
    - Face on the side opposite the text, large, cut off at the bottom edge, with a soft warm light behind it for separation.
 6. **Face frame.** Contact sheet of ~8 frames from the talk/intro segment of the Osmo original; pick an expression that fits the game (skeptical for a murder mystery, excited/explaining for a survival game). Extract a 2000×2000 crop at full resolution.
@@ -138,6 +145,10 @@ What worked:
 - Mac → container: stage files (for stills to look at, short clips to send in chat).
 - Deleting files in connected folders is off by default; write new names instead of relying on `rm`, and clean up stale files from lists before concatenating.
 - Small sidecar text files: do not rely on `read` for files without a trailing newline; set values directly.
+
+## Git and the sandbox
+- The device shell is a Linux sandbox, not his Mac's shell: it can't run GitButler (`but`) or push over SSH. For commits/landing in his repos (he uses GitButler), make the change and give him the exact command to run (e.g. `but commit -m "…"`). Plain `git` works only in repos that don't use GitButler (e.g. `~/src/skills`), and needs delete permission for git's lock files.
+- Files sent with SendUserFile can land in a `Claude outputs/` folder inside his repos; make sure repos ignore it (`/Claude outputs/` in `.gitignore`).
 
 ## Deliverables
 - `~/Movies/<Game> Let's Play - rough cut (720p).mp4` during review, `… - 4K.mp4` at the end.
