@@ -1,6 +1,6 @@
 ---
 name: lets-play-editor
-description: Edit Philip's YouTube Let's Play / gameplay recordings (OBS screen capture + DJI Osmo facecam) into a polished video: sync, transcript-based cut, clean voice audio, Remotion title/callout/end cards, facecam bubble, previews, final 4K, and the YouTube thumbnail (Canva options + real frames + face cutout). Use whenever he asks to edit, cut, preview, fix or render a Let's Play, gameplay video, rough cut, facecam recording or video thumbnail, even if he doesn't say 'Let's Play'.
+description: "Edit Philip's YouTube Let's Play / gameplay recordings (OBS screen capture + DJI Osmo facecam) into a polished video: sync, transcript-based cut, clean voice audio, Remotion title/callout/end cards, facecam bubble, previews, final 4K, and the YouTube thumbnail (Canva options + real frames + face cutout). Use whenever he asks to edit, cut, preview, fix or render a Let's Play, gameplay video, rough cut, facecam recording or video thumbnail, even if he doesn't say 'Let's Play'."
 ---
 
 # Let's Play editor
