@@ -21,6 +21,7 @@ Work is split across two machines, because each is good at different things:
 - **Nothing added appears or disappears instantly.** Every added element eases in and out (scale + opacity on the bubble, fade + small rise and scale on captions and portraits). Hard cuts between shots are fine.
 - **Face bubble: center his face.** Check crops on several frames across the range; head about half of the circle.
 - **Speech gets breathing room: 0.4 s before and after every line**, his and the game's. Never cut at the moment a word ends: transcript word ends are early. Find the real bounds by audio energy. Keep natural phrasing whole instead of chopping between words.
+- **No sound effects in reels** (no whoosh, pop, ding or impact). The music bed runs without interruption: never play game audio that has its own music over it. For a real dialogue take, keep the picture and lay the clean voice recordings in sync with it.
 - **Reels: never repeat a scene** (same place or action, such as two ramp jumps). Match backgrounds to what is said (show the character who speaks; the place named). Include at least one real dialogue take from the game. A face bubble appears before his first word, never after.
 - When one segment changes, redo only that segment; when only audio changes, remux (never re-render video).
 - Report progress with 💻 (doing) ✅ (done) ⏳ (to do) ❌ (blocker) 🙋‍♂️ (needs you). Succinct bullets, simplified technical English.
