@@ -37,9 +37,6 @@ Work is split across two machines, because each is good at different things:
 - Source files: OBS `.mov` and Osmo `.MP4` (ask if not given; they are in `~/Movies`).
 - Game name, URL, who made it, logo/title art (screenshot the game's title screen if needed), and what the end card's "Watch next" should point to.
 - Anything special: redone intro takes, window resized mid-recording, moments to keep ("oh shit" reactions are fine to keep).
-- **Several recordings of one sitting: present them as one continuous session** with one intro. Use the intro take whose stated goal the video actually reaches (chess vlog: he never reached 2100, so the "1917 → let's get to 2000" take). For a fun puzzle/highlight vlog, on-screen numbers (rating, score) don't need to stay consistent: jump around and use the best moments from every recording.
-- **No closing talk recorded:** end on the last reaction, then the end card. Don't ask him to record an outro.
-- **Puzzle / highlight vlogs (chess):** pick the most entertaining and most impressive puzzles he **solved**; prefer ones where he drew arrows (planning out loud). Show each chosen puzzle **whole**: from the new position to the finished result (success message on screen), then a beat. **Never cut inside a puzzle at all, not even long silent thinking** ("chess is a thinking man's game"): shorten the video by choosing fewer puzzles, not by trimming them. Intro: show the screen behind him (game layout with the facecam) so the rating is visible, not a full-screen facecam. Always make a title card. End card optional (he doesn't care for this kind of video).
 
 ## Inputs
 
@@ -101,7 +98,6 @@ alimiter=limit=0.8:attack=5:release=80:level=disabled
 - Transition `FaceToBubble` (36 frames = 1.2 s): game fades in while scaling 1.06→1; the facecam box moves from full frame to the bubble while its crop moves from the 16:9 face crop to the 4:3 head crop; corner radius grows; the ring fades in over the last 40%. Feed it two short clips cut from the sources (the last frames of the talk and the first frames of main). Its end frame must match the bubble used in the main pieces exactly, or there is a visible jump.
 
 ### 7. Layout
-- **Board + side-panel sites (chess.com Puzzles)** with big empty areas: crop the board square on the left (1000×1000 at 40,40 in 1920×1080 design), right column 800 wide = panel top (header, status bubble, score bar) + the rating row scaled up ×1.6 on the panel colour + big facecam filling the rest (800×~450, rounded 28 px, cyan ring). Approved for the chess vlog. Measure board/panel per layout (window zoom can change between recordings).
 - Talk/intro/outro: facecam full screen (16:9 crop around the face) — unless he is showing something on screen while talking (title screen, character select, a website): then show the gameplay with a **bigger facecam box** (PDX Punk: 320×240 at 720p, 960×720 at 4K) for the intro and the closing talk.
 - Gameplay: rounded facecam bubble (4:3 head crop) with a cyan ring (`rgb(62,231,255)`), placed where the game has no HUD. Ask Philip or look at stills. Samsara: middle-right, low enough that the minimap stays visible; pop-ups may be slightly covered.
 - Ring must overlap the video edge by a few pixels, so no gap shows at the rounded corners.
@@ -125,6 +121,24 @@ The device shell kills background jobs and each call is limited to ~180 s, so:
 ### 9. Finish
 - Keep per-segment files: video-only `<seg>_v.mp4` and `<seg>_audio.m4a` for tease/talk/main, plus title/transition/end card. Mux each, then `-f concat -c copy -movflags +faststart` into `~/Movies/<Game> Let's Play - 4K.mp4`. Because of this layout, an audio fix is a ~2 min remux.
 - Verify: every piece's frame count equals the EDL, final duration, overall loudness/peak, still frames at each callout and at the end card. Small (~60 ms) audio padding at segment ends is normal with concat and does not accumulate.
+
+## Chess puzzle vlogs (chess.com Puzzles; approved cut, Nov 2026)
+
+What he wants:
+- **Several recordings of one sitting = one continuous session**, one intro. Use the intro take whose goal the video actually reaches ("puzzle rating's 1917, let's get to 2000" — not the 2100 one). Ratings/scores on screen don't need to stay consistent; jump around freely.
+- **Content: the most entertaining and most impressive puzzles he solved.** Prefer puzzles where he drew arrows, talked through the idea, reacted ("whoa", "that's a clever one"), or gained more rating (harder puzzle). Always include the milestone ("Oh we made it, 2006!").
+- **Never cut inside a puzzle, not even long silent thinking** — "chess is a thinking man's game". Each puzzle runs whole, from the new position loading to the "Solved" message. Shorten the video by picking fewer puzzles.
+- **Intro over the screen** (game layout + facecam) so the rating is visible — not full-screen facecam.
+- Structure: tease (milestone moment, ~9 s) → title card → intro (runs to the end of the first puzzle) → puzzles → end on a fun last reaction ("…that was fun"). **No outro, no end card.** ~20 min = ~30 puzzles.
+- **Title card** (Remotion, 8 s, Inter from @fontsource, chess.com colours #81b64c / #262421): faint tilted checkerboard easing in square by square, "CHESS PUZZLES" label, big "Can I hit 2000?", and a rating pill whose number counts 1917 → 2006 and pops green.
+
+Layout (approved): crop the board square on the left (1000×1000 at 40,40 in 1920×1080 design); right column 800 wide = panel top (header, status bubble, score bar; panel y 34–610 at 4K) + the rating row (panel y 1785–1865) scaled ×1.6 on the panel colour + big facecam filling the rest (800×449, 4K crop 2900×1628 at 650,266, rounded 28 px, cyan ring). Measure board/panel per recording (window zoom changed between recordings: board x 912–2171 vs 499–2581).
+
+How to find puzzles (no game audio was captured, so use the screen):
+- Keyframes only (`-skip_frame nokey`, every ~1.9 s, very fast) at 960×540 → OCR with tesseract: rating digits, status bubble ("White/Black to move", "Incorrect", "Solved"). A rating change = end of a puzzle; its sign = solved/failed.
+- Board motion at 5 fps (192×108 gray, mean abs diff of the board area, ~14× realtime on the Mac): a new puzzle loading is a board-wide jump (mean > 10; fallback the biggest spike > 5 within 8 s after the result message). Span = load → next load − 0.2 s. Check a few span ends on a 4K frame: "Solved" must be visible.
+- Arrows: orange pixels on the board (R > G+18, 145 < G < 210, B < 115, R > 180); last-move highlights are yellow-green (G ≥ R) and don't match.
+- Name rendered pieces by content (`seg_src_start_n`) so a changed cut reuses unchanged pieces.
 
 ## Thumbnail
 
