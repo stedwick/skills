@@ -39,6 +39,7 @@ Work is split across two machines, because each is good at different things:
 - Anything special: redone intro takes, window resized mid-recording, moments to keep ("oh shit" reactions are fine to keep).
 - **Several recordings of one sitting: present them as one continuous session** with one intro. Use the intro take whose stated goal the video actually reaches (chess vlog: he never reached 2100, so the "1917 → let's get to 2000" take). For a fun puzzle/highlight vlog, on-screen numbers (rating, score) don't need to stay consistent: jump around and use the best moments from every recording.
 - **No closing talk recorded:** end on the last reaction, then the end card. Don't ask him to record an outro.
+- **Puzzle / highlight vlogs (chess):** pick the most entertaining and most impressive puzzles he **solved**; prefer ones where he drew arrows (planning out loud). Show each chosen puzzle **whole**: from the new position to the finished result (success message on screen), then a beat. Never cut away mid-puzzle; only shorten long idle thinking inside it. Intro: show the screen behind him (game layout with the facecam) so the rating is visible, not a full-screen facecam. Always make a title card. End card optional (he doesn't care for this kind of video).
 
 ## Inputs
 
