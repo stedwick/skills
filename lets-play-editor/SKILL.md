@@ -13,7 +13,7 @@ Work is split across two machines, because each is good at different things:
 
 ## How Philip wants to work
 
-- **Keep this skill up to date as we go, without being asked.** Whenever he gives feedback, corrects something or states a preference about editing, add it to this skill right away: edit `~/src/skills/lets-play-editor/SKILL.md`, commit it in `~/src/skills`, and propose the same full text to his Claude account. Mention it in one line.
+- **Keep this skill up to date without being asked — once the cut is approved.** Don't add intermediary rules mid-edit (they may change). When he approves a final cut, fold his feedback from that video into this skill: edit `~/src/skills/lets-play-editor/SKILL.md`, commit it in `~/src/skills`, and propose the same full text to his Claude account. Mention it in one line.
 - **Preview before doing the whole thing.** This is the most important rule, and he has had to repeat it. For every change, fix or new idea, first send the smallest thing that lets him judge it: a 10–40 s clip of only the changed moment, an audio before/after (same 20 s twice, separated by 1.5 s of silence), or a still frame. Do the full job only after he says yes. The full 4K render happens once, at the end, when he asks for it.
 - **Short reels (about 30 s): preview the whole thing.** He prefers one low-resolution render (720×1280) of the full reel over a 10 s excerpt. The final high-resolution render still waits for his yes.
 - **Change only what he names.** Make each named fix on the last version he liked and keep everything else (cut, pacing, music, shots, overlays). A question such as "Why did you change X?" is a question: answer it, and ask before rebuilding anything.
