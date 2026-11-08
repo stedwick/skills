@@ -37,7 +37,7 @@ Work is split across two machines, because each is good at different things:
 - Source files: OBS `.mov` and Osmo `.MP4` (ask if not given; they are in `~/Movies`).
 - Game name, URL, who made it, logo/title art (screenshot the game's title screen if needed), and what the end card's "Watch next" should point to.
 - Anything special: redone intro takes, window resized mid-recording, moments to keep ("oh shit" reactions are fine to keep).
-- **Several recordings of one sitting: present them as one continuous session** with one intro. Use the intro take whose stated goal the video actually reaches (chess vlog: he never reached 2100, so the "1917 → let's get to 2000" take). Leave out footage whose on-screen numbers (rating, score) would contradict that story, and say so.
+- **Several recordings of one sitting: present them as one continuous session** with one intro. Use the intro take whose stated goal the video actually reaches (chess vlog: he never reached 2100, so the "1917 → let's get to 2000" take). For a fun puzzle/highlight vlog, on-screen numbers (rating, score) don't need to stay consistent: jump around and use the best moments from every recording.
 - **No closing talk recorded:** end on the last reaction, then the end card. Don't ask him to record an outro.
 
 ## Inputs
