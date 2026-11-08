@@ -128,7 +128,7 @@ What he wants:
 - **Several recordings of one sitting = one continuous session**, one intro. Use the intro take whose goal the video actually reaches ("puzzle rating's 1917, let's get to 2000" — not the 2100 one). Ratings/scores on screen don't need to stay consistent; jump around freely.
 - **Content: the most entertaining and most impressive puzzles he solved.** Prefer puzzles where he drew arrows, talked through the idea, reacted ("whoa", "that's a clever one"), or gained more rating (harder puzzle). Always include the milestone ("Oh we made it, 2006!").
 - **Never cut inside a puzzle, not even long silent thinking** — "chess is a thinking man's game". Each puzzle runs whole, from the new position loading to the "Solved" message. Shorten the video by picking fewer puzzles.
-- **Intro over the screen** (game layout + facecam) so the rating is visible — not full-screen facecam.
+- **Intro over the screen** so the rating is visible — not full-screen facecam. While he is on another page (his chess.com profile), show the **full screen scaled to 16:9 with the facecam box on top** (same size/place/ring as the puzzle layout) — never the board/panel crop, which splits a non-puzzle page. Switch to the puzzle layout when the puzzle page has loaded (board-wide motion spike).
 - Structure: tease (milestone moment, ~9 s) → title card → intro (runs to the end of the first puzzle) → puzzles → end on a fun last reaction ("…that was fun"). **No outro, no end card.** ~20 min = ~30 puzzles.
 - **Title card** (Remotion, 8 s, Inter from @fontsource, chess.com colours #81b64c / #262421): faint tilted checkerboard easing in square by square, "CHESS PUZZLES" label, big "Can I hit 2000?", and a rating pill whose number counts 1917 → 2006 and pops green.
 
