@@ -73,10 +73,10 @@ ElevenLabs Scribe (`eleven_scribe_v1`) through Executor (`tools["elevenlabs-mcp"
 **Minimal processing (approved):**
 ```
 highpass=f=80, afftdn=nr=6:nf=-55            # rumble + light noise reduction only
-× transcript gate mask (40 ms fades)          # mutes gaps between sentences and garbled/bleed lines
 volume=+16..22dB (match speech level), acompressor=threshold=0.12:ratio=2:attack=10:release=200:knee=6,
 alimiter=limit=0.8:attack=5:release=80:level=disabled
 ```
+- **No transcript gate / no muting between phrases.** Muting the gaps made his talk sound choppy and awkward (chess vlog, Nov 2026); the room tone stays. Remove a garbled or bleed line by cutting it from the EDL, not by muting.
 - No EQ and no de-esser by default. The older "option C" (`afftdn=nr=12:tn=1` adaptive, EQ −2 dB @250 Hz / +2 dB @4 kHz, de-esser, 3:1 compression) was "better but not perfect" — the strong adaptive noise reduction thins the voice.
 - Game: `dynaudnorm=f=400:g=31:p=0.9:m=6`, about −2 to −4 dB, ducked under voice with `sidechaincompress=threshold=0.03:ratio=4:attack=30:release=400`.
 - **Keep everything in float (`pcm_f32le`) until the final AAC.** 16-bit intermediates clip silently. Lesson: +13 dB on a voice peaking at −3.6 dBFS hard-clipped 10% of speech.
