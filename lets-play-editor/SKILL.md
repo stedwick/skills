@@ -37,6 +37,8 @@ Work is split across two machines, because each is good at different things:
 - Source files: OBS `.mov` and Osmo `.MP4` (ask if not given; they are in `~/Movies`).
 - Game name, URL, who made it, logo/title art (screenshot the game's title screen if needed), and what the end card's "Watch next" should point to.
 - Anything special: redone intro takes, window resized mid-recording, moments to keep ("oh shit" reactions are fine to keep).
+- **Several recordings of one sitting: present them as one continuous session** with one intro. Use the intro take whose stated goal the video actually reaches (chess vlog: he never reached 2100, so the "1917 → let's get to 2000" take). Leave out footage whose on-screen numbers (rating, score) would contradict that story, and say so.
+- **No closing talk recorded:** end on the last reaction, then the end card. Don't ask him to record an outro.
 
 ## Inputs
 
@@ -98,6 +100,7 @@ alimiter=limit=0.8:attack=5:release=80:level=disabled
 - Transition `FaceToBubble` (36 frames = 1.2 s): game fades in while scaling 1.06→1; the facecam box moves from full frame to the bubble while its crop moves from the 16:9 face crop to the 4:3 head crop; corner radius grows; the ring fades in over the last 40%. Feed it two short clips cut from the sources (the last frames of the talk and the first frames of main). Its end frame must match the bubble used in the main pieces exactly, or there is a visible jump.
 
 ### 7. Layout
+- **Board + side-panel sites (chess.com Puzzles)** with big empty areas: crop the board square on the left (1000×1000 at 40,40 in 1920×1080 design), right column 800 wide = panel top (header, status bubble, score bar) + the rating row scaled up ×1.6 on the panel colour + big facecam filling the rest (800×~450, rounded 28 px, cyan ring). Approved for the chess vlog. Measure board/panel per layout (window zoom can change between recordings).
 - Talk/intro/outro: facecam full screen (16:9 crop around the face) — unless he is showing something on screen while talking (title screen, character select, a website): then show the gameplay with a **bigger facecam box** (PDX Punk: 320×240 at 720p, 960×720 at 4K) for the intro and the closing talk.
 - Gameplay: rounded facecam bubble (4:3 head crop) with a cyan ring (`rgb(62,231,255)`), placed where the game has no HUD. Ask Philip or look at stills. Samsara: middle-right, low enough that the minimap stays visible; pop-ups may be slightly covered.
 - Ring must overlap the video edge by a few pixels, so no gap shows at the rounded corners.
