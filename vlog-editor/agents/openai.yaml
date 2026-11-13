@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vlog Editor"
+  short_description: "Edit vlogs with synced audio and reviewable cuts"
+  default_prompt: "Use $vlog-editor to edit my vlog from the source recordings."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review Vlog Editor"
+  short_description: "Shape and edit a review vlog from recorded material"
+  default_prompt: "Use $review-vlog-editor to edit my recorded review."
