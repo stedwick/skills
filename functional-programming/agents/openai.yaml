@@ -1,0 +1,6 @@
+interface:
+  display_name: "Functional Programming"
+  short_description: "Build small, reusable functions with fast tests"
+  default_prompt: "Use $functional-programming to build or improve this logic with small functions, clear boundaries, and fast tests."
+policy:
+  allow_implicit_invocation: true
