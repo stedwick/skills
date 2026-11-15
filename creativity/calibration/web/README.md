@@ -16,7 +16,7 @@ What all three share, in the user's words: "They all look identical. Super borin
 
 ## Success (user's own example)
 
-- **ardia.dev**: a browser for Mac. The user called it "a beautiful landing page". What it does: a full-bleed hero with a pixel-stretched landscape photo and a sun the visitor can drag ("DRAG THE SUN"), a joke headline in huge black grotesque type ("TOUCH GRASS."), a live clickable product inside the page instead of a screenshot ("NOT A SCREENSHOT. GO ON, CLICK A TAB. TOLD YOU."), a confident funny voice, and dense, honest benchmark data with charts. Colour, play, real product, real proof.
+- **ardia.dev**: a browser for Mac. The user called it "a beautiful landing page". What it does: a full-bleed hero with a pixel-stretched landscape photo and a sun the visitor can drag ("DRAG THE SUN"), a joke headline in huge black grotesque type ("TOUCH GRASS."), a live clickable product inside the page instead of a screenshot ("NOT A SCREENSHOT. GO ON, CLICK A TAB. TOLD YOU."), a confident funny voice, and dense, honest benchmark data with charts. Colour, play, real product, real proof. The user's own analysis of why it looks so nice: **coherence** above all (a painted landscape that goes from morning to night down the page; warm paper, painted hills, brush-shaped section edges, the palette changing with the time of day), paint texture and fine grain, a strong type hierarchy (large bold Mona Sans headlines, small Martian Mono labels, scaled to the screen), real product captures placed on painted backgrounds, large spacing with short copy, and motion with a purpose (a still image while the scene loads, and for reduced motion). Its only fault for the user: too heavy on CPU and memory.
 
 ## Middle of the scale (user scores 5 to 7)
 

@@ -31,6 +31,14 @@ A previous judge, given only text, scored three pages 7.7 to 8.2. The director s
    - **Swapped images.** Change shown by replacing one picture with another that does not match, instead of change inside one continuous scene.
    - **Broken conventions.** A "menu" that does not work as a menu, a footer that does not look like a footer, a button that does not look like a button.
    Lower quality by up to 2 for these, as for execution faults, and name each one in `biggest_gaps`.
+   Then check what the director praises in work he loves (ardia.dev, joshwcomeau.com):
+   - **Coherence.** Do the art, colours, type, images, motion and even the section edges all serve one idea? In ardia.dev a painted landscape runs from morning to night down the page, and everything (paper texture, brush-shaped section edges, the palette) belongs to it. A page where each part has its own style is weaker, however good each part is.
+   - **Texture.** Paper, grain, paint, print, pixels: something that stops it looking like flat software panels.
+   - **Type hierarchy.** One clear, large, confident headline voice and a smaller supporting voice, scaled to the screen. Small technical labels are fine as support; they are a machine tell only when they are most of the design.
+   - **The real thing inside the art.** Real screenshots, real work, real numbers placed into the artwork, not pasted in grey boxes.
+   - **Breathing room, short copy.** Generous space between sections and few words, on a page that is still full of things to see. Emptiness with nothing to see is not breathing room.
+   - **Motion with a purpose.** It shows the idea (time passing, a thing reacting) and stops. A still fallback exists for slow loads and reduced motion.
+   Name the best of these in `strongest_thing` and the missing ones in `biggest_gaps`.
 6. **Overall.** Start from the rank: work that ranks below every board example cannot score more than 5. Work below a calibration failure cannot score more than 2. Work in the middle of the board examples is about 7 to 8. Above all of them is 9 to 10. Inside that limit, use `0.5 × quality + 0.5 × freshness`, where quality is the average of the principles, lowered by up to 2 for execution faults (broken layout, unreadable text, errors). Then:
    - freshness 2 or less → overall at most 3;
    - freshness 4 or less → overall at most 5;

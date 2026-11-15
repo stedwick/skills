@@ -53,15 +53,17 @@ This step is where the quality comes from. Do not rush it and do not make anythi
 
 **Collect, then choose.** Find at least 20 candidates. From them, choose 8 to 12 to study closely, plus 2 or 3 from neighbouring fields (a museum, a film title sequence, a board game, a record sleeve), which are often where fresh ideas come from. Prefer work that is recent and acclaimed by juries or practitioners, and work that is surprising. Study **only small, independent creators**: individuals, small studios, indie developers, personal sites, indie games, zines, self-published art, one-person projects. Never take examples from large companies, corporate brands or B2B SaaS, even when a jury awarded them: their work is made by committee, and it pulls you to the safe average. Personal work takes the risks; it is where creative ideas appear first. Avoid the obvious famous five that every model already knows; they pull you to the average.
 
-**Study the real thing.** Open it. Take captures and save them in `board/`: for visual and interactive work, screenshots at several scroll positions and a few frames of motion; for writing, the opening and a key passage (short excerpts only); for games, map screenshots, footage frames and designer commentary; for music, the structure and what critics point at. For web pages and HTML builds, `node scripts/capture.mjs <url-or-file> <outdir> name='js'...` writes desktop and phone screenshots plus extra states (headless Chrome; it may need to run outside a command sandbox). The images matter more than your notes: a builder or judge who reads "bold use of colour" learns nothing, but one who sees the capture does.
+**Study the real thing.** Open it. Take captures and save them in `board/`: for visual and interactive work, screenshots at several scroll positions and a few frames of motion; for writing, the opening and a key passage (short excerpts only); for games, map screenshots, footage frames and designer commentary; for music, the structure and what critics point at. For web pages and HTML builds, use the browser your environment already gives you (for example a built-in browser pane): each agent opens its own tab, takes screenshots at desktop and phone size and at scroll positions from top to bottom, and copies the saved screenshot files into the capture folder. Do not launch extra browsers (a separate Chrome, a browser-automation CLI) that the user sees appear on their computer. Only if no browser tool exists, `node scripts/capture.mjs <url-or-file> <outdir> name='js'...` takes the same screenshots with headless Chrome (it may need to run outside a command sandbox; it always closes Chrome). The images matter more than your notes: a builder or judge who reads "bold use of colour" learns nothing, but one who sees the capture does.
 
 **Think.** For each example, answer: what is the one thing it does that others do not? How is it built? What does it feel like in the first five seconds? What would it look like if a machine had made it badly, and why does it not look like that?
 
 **Write `research.md`.** It is the judge's and the builders' knowledge of quality, so write it for a reader with no other context.
 
 1. **Examples.** For each: name, link, the capture files, why it is praised (cite the jury or critic), how it is built, how it looks, sounds or reads, how it behaves, and its one unique move. Be concrete.
-2. **Rubric.** Six to nine principles shared by the great examples, each with a description of a 3, a 6 and a 9. The rubric must cover the **sensory craft** of the medium, not only the idea and the words. `references/media.md` lists the craft areas per medium (for visual work: colour, typography, imagery, composition, motion, interaction; for writing: voice, imagery, rhythm, structure). Include one principle for **impact**: does it stop the audience, would they show it to a friend? Give principles as transferable qualities, so a draft can meet them without copying.
+2. **Rubric.** Six to nine principles shared by the great examples, each with a description of a 3, a 6 and a 9. The rubric must cover the **sensory craft** of the medium, not only the idea and the words. `references/media.md` lists the craft areas per medium (for visual work: colour, typography, imagery, composition, motion, interaction; for writing: voice, imagery, rhythm, structure). Include one principle for **impact**: does it stop the audience, would they show it to a friend? And one for **coherence**: do all the parts serve one idea? Give principles as transferable qualities, so a draft can meet them without copying.
 3. **Clichés and machine tells.** The look of the average, forgettable version, and the signs of machine-made work in this medium. Start from the list in `references/media.md` and from `calibration/`.
+
+**Look at every capture before you use it.** Remove or redo blank, error or loading-screen captures (WebGL sites often capture black); a judge given a blank capture wastes effort ranking it.
 
 **Checks before you leave step 1:** at least 15 minutes since the start time; at least 20 candidates and 8 studied examples in the log; captures in `board/` for each studied example; the rubric covers sensory craft and impact.
 
@@ -92,11 +94,17 @@ Run the three directions in parallel if you have subagents: one builder per dire
 - **Parts join.** Sections flow into one another (a shared horizon, an overlap, a transition, one continuous scene). Never stack separate pictures with different light or style and cut hard between them.
 - **Show change inside one scene.** To show time, weather or state, change the light, colour and a few parts of one scene. Do not swap in a different generated image; the images never match and it looks bad.
 - **Conventions still work.** A menu is a real menu that takes you somewhere, a footer looks like a footer, a button looks like a button. Be creative inside them, not instead of them.
+- **One art direction, everywhere.** Pick one idea and make every part serve it: colours, type, images, textures, motion, even the shape of section edges (ardia.dev: a painted landscape from morning to night, with brush-shaped edges and warm paper). Coherence is what makes a page memorable.
+- **Texture.** Paper, grain, paint, print or pixels, so it does not look like flat software panels.
+- **Clear type hierarchy.** One big, bold headline voice and one smaller supporting voice, both scaled to the screen.
+- **Put the real thing inside the art.** Real screenshots, real work and real numbers sit on or in the artwork, not in grey boxes beside it.
+- **Short copy, room to breathe,** on a page that is still full of things to see.
+- **Light by construction.** Static files; heavy parts (a canvas, a large image) show a matching still image first; reduced motion gets the still; prepare image crops for phone and wide screens.
 
 For each draft:
 
 1. **Build** it into `draft-N/`.
-2. **Capture** it as a person experiences it: screenshots at desktop and phone size and at several scroll positions, frames of motion, the text, a playthrough.
+2. **Capture** it as a person experiences it: screenshots at desktop and phone size and at several scroll positions, frames of motion, the text, a playthrough. In a hidden or background browser tab, animation frames and CSS transitions may stall: turn transitions off for the shots (and say so in the captions), wait for images to paint, and close your tab when the draft is done, because browser panes have a tab limit. Measure frame rate only in a visible tab.
 3. **Look at your own capture** next to two board captures. If it is plainly worse, or it looks like a calibration failure, fix it before scoring.
 4. **Score** it with a fresh judge (see below). Save the reply as `draft-N/score.json`.
 5. **Revise** from the score.
@@ -115,7 +123,7 @@ What each draft is for:
 
 After all three draft 1s are scored, show the user the three side by side with one line each, and open each live build where the user can click through it (for web builds, serve the folder with a small local web server, because a browser opened on a local file may not load the images). Ask: keep, redirect, or kill each one. Replace a killed direction now (back to the ideas list or a new spark), before more builds are spent. If they cannot join, continue.
 
-**After draft 3.** If the best draft scores 8 or more, the direction is done. If below 8, replace the direction once and run it again; if the replacement is also below 8, present it with its true score. Never raise a score by arguing with the judge or re-scoring until it changes. An honest 6 is more useful than a false 8.
+**After draft 3.** If the best draft scores 8 or more, the direction is done. If it is below 6.5, replace the direction once with a new premise of the same kind and run it again; present the better of the two, with the other linked. Between 6.5 and 8, keep the direction and present it with its true score and its gaps. (In run 3, all three replacements of directions scoring 6.4 to 7.1 finished lower than the originals, and they cost an hour; a new premise starts again from about 6.) Never raise a score by arguing with the judge or re-scoring until it changes. An honest 6 is more useful than a false 8.
 
 Before you present, put the three finals side by side. If two share a look or an idea, say so plainly.
 
