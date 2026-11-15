@@ -1,0 +1,21 @@
+# Direction B2. Medium (replacement): "Portland Print Series"
+
+Why it exists: the first medium direction ("Timberline Trail") finished at 7.0, below the skill's target of 8, so the skill replaces it once with a different premise of the same size.
+
+- **Premise:** Alex's career is published as a numbered series of screen-print posters, one per chapter of their life, each printed from their own Mt Hood and Portland art in a few flat inks, hung in order along one long gallery wall that you walk past as you scroll.
+- **Size:** medium. Keep all content and facts, their name, their voice, Portland and Mt Hood. Redesign the look and the journey around this one idea.
+- **How the content maps:**
+  - The hero is Poster Nº 1, "Portland, Oregon", printed from their five parallax layers in 5 to 6 flat inks with paper texture and slight mis-registration; their name and title are the poster lettering, and a real menu and résumé button sit on the wall above the posters.
+  - A small gallery label beside each poster carries the facts (like a museum label: title, year, medium, a few lines). Facts must be fast: the first label gives role, Cedar Apps, 18 years, Portland, résumé, email.
+  - Career: three posters (Cedar Apps 2025, Fernline 2018 to 2025, Gradbook 2008 to 2016), each a different crop and time of day of their scene (the smallest thing made large: one bridge, one tower, the river, a window), with the real screenshot printed into the poster as one ink.
+  - Education: a two-colour poster for two universities, maths in the artwork (a maths paper: the city mirrored in the river).
+  - Side projects: a sheet of 11 small "proof prints" or postcards in the same series style, each with a working link; two favourites shown larger.
+  - Hobbies: four posters in a row: the card-game prize, a popular video, a chess rating, and Biscuit (a portrait of the dog in flat inks, from the real photo in original/legacy, posterised carefully).
+  - Contact: the gallery's last label and the "gift shop" counter with the contact details, the résumé and the form; then a real footer.
+- **Time is the main material (spark):** the posters run in date order, and their ink palettes move through the day and the years: morning blue and snow at Nº 1, warm afternoon in the middle, dusk and night at the end. The wall light moves with you.
+- **Fingerprint:** palette of screen-print inks on warm off-black wall #15140F (not beige): sky cyan #3BB4E5, snow #F6F1E4, pine #1F4A33, Portland dusk orange #F27A2E, poster red #D9412B, night ink #1A2340, mustard #E8B23A; type: a bold poster display face with character (for example "Bungee", "Rubik Mono One", "Bebas Neue" is too common — prefer "Alfa Slab One", "Abril Fatface" or "Fraunces" black at poster size) plus a clear text face for labels (Atkinson Hyperlegible or Source Serif); layout: one horizontal-feeling wall of large posters in a vertical scroll, alternating sizes, with labels beside them; image method: their own layers posterised to flat inks (SVG filters such as feComponentTransfer with discrete tables, or pre-processed images saved beside the page), halftone dots, paper grain, registration offsets; motion: posters ease into place on the wall, ink layers register (slide together) once as each poster enters, then stop; interaction: hover a poster to lift it slightly; tap a proof print to open it.
+- **Learns from:** Fifty-Nine Parks (one fixed frame for a series, brightest ink for the title), Canvas Cycle (same picture, different light), ardia (one art direction), Mangham (facts in one place), Josh Comeau (springs).
+- **Risk:** posters as separate pictures could read as hard cuts: they must clearly be framed prints hung on one continuous wall with shared light and shadow, not stacked backgrounds; posterising photos crudely would look cheap.
+- **Spark:** lens "make the smallest thing the largest thing"; domain "a climbing route topo" (the gallery wall has a thin route line connecting the posters in order, like a topo); form "motion or time is the main material".
+
+All directions must obey: static HTML, CSS and a little JS; assets relative (reuse `../../original/parallax/` and `../../original/legacy/`); no audio; no WebGL; nothing animates forever; reduced motion respected; all true facts kept, none invented; contact details, résumé PDF and project links work.

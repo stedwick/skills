@@ -44,7 +44,7 @@ A previous judge, given only text, scored three pages 7.7 to 8.2. The director s
    - freshness 4 or less → overall at most 5;
    - any sensory-craft principle (colour, type, imagery, voice, sound, and so on) at 3 or less → overall at most 5.
 
-Be accurate, not kind. Most competent machine-made work is a 3 to 5 here. An 8 means a jury would consider it. In run 2 this judge ranked three pages in the same order as the director but scored each about 0.6 too high; the calibration folder has those pages with the director's scores, so use them as fixed points.
+Be accurate, not kind. Most competent machine-made work is a 3 to 5 here. An 8 means a jury would consider it. In run 2 this judge ranked three pages in the same order as the director but scored each about 0.6 too high; the calibration folder has those pages with the director's scores, so use them as fixed points. In run 3 it made the opposite error: it scored three strong, coherent, original pages 6.4 to 7.1, and the director scored them 7 to 9 (see `run3/` in the calibration folder). Do not mark strong work down to the middle only because it has small faults; the director rewards concrete familiar objects that hold real facts, and one control that is both useful and a joke.
 
 ## Reply format
 

@@ -30,4 +30,23 @@ The three finals of run 2 (same tide-app brief, skill draft 2). The user: "way b
 
 Note: the user named the cards by their position on the storyboard (first card = A), not by our labels. Always label the options in the order they are shown.
 
+## Near the top of the scale (user scores 7 to 9)
+
+Run 3 (skill draft 3): improve the user's own portfolio site at three sizes. The pages reuse their own painted Mt Hood and Portland layers, screenshots and photos; no generated images. The user: "fantastic"; he scored A, B and C "at least a 7 or an 8, maybe even a 9". **The judge gave 6.4, 7.0 and 7.1, so it was 1 to 2 points too low.** Run 2's judge was 0.6 too high. Together: score strong, coherent, original work near 8, and do not mark it down only because each part is not perfect. Screenshots are in `run3/`.
+
+| Files (`run3/`) | Option | What the user liked (their words, shortened) | Why it works |
+|---|---|---|---|
+| `A-small-*.jpg` | A small, "One Portland Day": same page, their scene fixed behind it and re-lit from morning to night | "I love that top-notch bar that pops up and shows the sun" (a slide-in menu whose dial shows the sun's position and the hour as you scroll). The dog icon (pixel-art Biscuit). "The postcard Contact me at the bottom." | Change inside one continuous scene. Small, crafted details that carry the idea into standard parts (menu, contact, footer). |
+| `B-medium-*.jpg` | B medium, "Timberline Trail": career as a trail map down Mt Hood | "The idea of hiking and making a map around Portland is also creative." "I like the idea of torn paper and going from day to night." | One metaphor from their own world organises the whole page; torn-paper edges join the sections. |
+| `B2-print-*.jpg` | B tie, "Portland Print Series" (7.0) | Not named. | The gallery wall becomes the night sky; the visitor's light switches on the city. |
+| `C-large-*.jpg` | C large, "Legal Tender": their résumé as security-printed paper | **The user's favourite by far:** "the identification card, and then the UV lamp dark mode button. That's the most creative by far." Also "the passport book, the stamps, the diplomas, and the receipt are all great." | True facts set in real, familiar paper forms (ID card, passport, stamps, diploma, receipt), and one playful control that is also useful (the UV lamp is the dark mode and shows hidden ink). |
+| `C2-theatre-goodnight.jpg` | Large replacement, "Now Playing: Portland" (6.9) | "I love the Goodnight Portland footer." | A closing line in their voice that ends the page's story, inside a real footer. |
+
+Lessons:
+- The user rewards **concrete, familiar objects that hold real facts** (an ID card, a passport stamp, a receipt, a postcard, a trail map) far more than abstract styling.
+- The best single idea was **a useful control that is also a joke** (UV lamp = dark mode). Look for one in every direction.
+- Details in standard parts count: the menu, contact and footer are where the user noticed the craft.
+- Good ideas from a replaced direction (the Goodnight footer) are worth keeping: the storyboard should list them so they can move into the chosen option.
+- Example direction briefs from this run are in `../../references/examples/portfolio-site/`.
+
 Add new user judgments here after each run.
