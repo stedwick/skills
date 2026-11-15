@@ -1,0 +1,4 @@
+# Test runs of skills: captures, builds and images. Never commit them.
+creativity-workspace/
+creativity-runs/
+.claude/launch.json
