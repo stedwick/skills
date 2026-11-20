@@ -6,8 +6,8 @@
 // then write state-<name>-desktop.png and state-<name>-phone.png (viewport only).
 // Use states for scroll positions and interactions, e.g.  mid='window.scrollTo(0,1200)'
 import { spawn } from 'node:child_process';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, existsSync } from 'node:fs';
+import { tmpdir, homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 
 const [file, outdir, ...stateArgs] = process.argv.slice(2);
@@ -16,7 +16,10 @@ const url = /^https?:/.test(file) ? file : 'file://' + resolve(file);
 mkdirSync(outdir, { recursive: true });
 const profile = mkdtempSync(join(tmpdir(), 'cap-'));
 const port = 9300 + Math.floor(Math.random() * 600);
-const chrome = spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', [
+// Prefer Google's headless-only Chrome (no Dock icon on macOS); fall back to the installed Chrome.
+const SHELL = join(homedir(), '.cache/chrome-headless-shell/chrome-headless-shell-mac-arm64/chrome-headless-shell');
+const CHROME = process.env.CHROME_PATH || (existsSync(SHELL) ? SHELL : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome');
+const chrome = spawn(CHROME, [
   '--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run',
   `--user-data-dir=${profile}`, `--remote-debugging-port=${port}`, 'about:blank',
 ], { stdio: 'ignore' });
@@ -52,7 +55,12 @@ async function fullShot(path) {
   const { result } = await send('Runtime.evaluate', { expression: 'Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)', returnByValue: true });
   const { result: w } = await send('Runtime.evaluate', { expression: 'window.innerWidth', returnByValue: true });
   const h = Math.min(result.value, 12000);
-  const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: 0, width: w.value, height: h, scale: 1 } });
+  // Very tall pages at 2x can exceed the GPU limit (headless shell fails on them): retry at a smaller scale.
+  let data;
+  for (const scale of [1, 0.5, 0.25]) {
+    try { ({ data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: 0, width: w.value, height: h, scale } })); break; }
+    catch (e) { if (scale === 0.25) throw e; }
+  }
   writeFileSync(path, Buffer.from(data, 'base64')); console.log('ok', path, `(${h}px tall)`);
 }
 async function view(w, h, dpr, mobile) {

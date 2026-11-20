@@ -39,7 +39,7 @@ To use it, type `/creativity` and say what you want, for example: "/creativity G
 
 A full run can take ~1 to 2 hours.
 
-Of course, this isn't real creativity, and it won't one-shot a production website. But it beats another beige-y, orange-y, purplish, generic AI landing page.
+Of course, this isn't real creativity, and it won't one-shot a production design. But it beats another beige-y, orange-y, purplish, generic AI landing page.
 
 Here are some creative reimaginings of my site at https://phils.app
 
