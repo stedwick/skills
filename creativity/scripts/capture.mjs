@@ -54,11 +54,13 @@ async function shot(path, full) {
 async function fullShot(path) {
   const { result } = await send('Runtime.evaluate', { expression: 'Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)', returnByValue: true });
   const { result: w } = await send('Runtime.evaluate', { expression: 'window.innerWidth', returnByValue: true });
-  const h = Math.min(result.value, 12000);
+  const { result: d } = await send('Runtime.evaluate', { expression: 'devicePixelRatio', returnByValue: true });
+  const h = Math.min(result.value, Math.floor(12000 / d.value)); // keep the image under ~12,000 device pixels
   // Very tall pages at 2x can exceed the GPU limit (headless shell fails on them): retry at a smaller scale.
   let data;
   for (const scale of [1, 0.5, 0.25]) {
-    try { ({ data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: 0, width: w.value, height: h, scale } })); break; }
+    try { ({ data } = await Promise.race([send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: 0, width: w.value, height: h, scale } }),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('full-page shot timed out')), 25000))])); break; }
     catch (e) { if (scale === 0.25) throw e; }
   }
   writeFileSync(path, Buffer.from(data, 'base64')); console.log('ok', path, `(${h}px tall)`);
@@ -78,7 +80,7 @@ try {
   for (const [name, w, h, dpr, mobile] of views) {
     await view(w, h, dpr, mobile); await load();
     await shot(join(outdir, `${name}-fold.png`));
-    await fullShot(join(outdir, `${name}-full.png`));
+    try { await fullShot(join(outdir, `${name}-full.png`)); } catch (e) { console.log('SKIPPED', `${name}-full.png:`, e.message); }
     for (const s of stateArgs) {
       const eq = s.indexOf('='); const sn = s.slice(0, eq); const js = s.slice(eq + 1);
       await load();

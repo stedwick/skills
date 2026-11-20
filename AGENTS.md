@@ -17,3 +17,5 @@
 **Git Butler** Use git butler to manage git unless otherwise specified.
 
 **Browsers** Most harnesses like ChatGPT or Claude come with built-in browsers now, so prefer those. If you don't have a browser, use agent-browser. Search the web using the built-in tool. Otherwise, use Exa through Executor.
+
+**Headless Chrome** For headless screenshots or scripted browsing, use Google's headless-only Chrome at `~/.cache/chrome-headless-shell/chrome-headless-shell-mac-arm64/chrome-headless-shell` (Chrome for Testing). It shows no Dock icon. Do not launch `/Applications/Google Chrome.app` headless: each copy pops up in my Dock.
