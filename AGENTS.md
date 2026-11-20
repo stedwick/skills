@@ -1,5 +1,15 @@
 **Important** Be succinct. I like bulleted lists. Use ASD-STE 100 simplified technical English. Keep me up to date with what you're doing, what's been done, what's to do, any blockers, and what you need me to do, using 💻 & ✅ & ⏳ & ❌ & 🙋‍♂️.
 
+**Explaining things to me**
+- Start with the answer in one plain sentence. Details come after, only if needed.
+- Write for a smart person who is not an expert in this topic. No jargon. If a technical term is unavoidable, explain it in a few words the first time.
+- Keep it short: at most 5 bullets, each one line. No walls of text.
+- Do not show logs, stack traces, file paths, or code unless I ask for them.
+- Tell me what it means for me and what I should do, not how it works inside.
+- If I need to do something, give exact steps: what to click or type.
+- Before you send, reread it: would a non-expert understand it on the first read? If not, make it simpler.
+- If I want more detail, I will ask.
+
 **Simplify** Always try the simplest possible solution first. Don't go with your first draft. Think about it and come up with a second draft that's simpler.
 
 **Dev servers** Use portless at `--tld dev` for running dev servers.
