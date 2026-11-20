@@ -1,0 +1,77 @@
+<!doctype html>
+<!--
+  Hand-over page template for the finishing skill.
+  Fill it from list.json, verdicts/<piece>.json and the open list.
+  Keep the order per piece: link and verdict, ledger, open list, before/after pairs.
+  It must read in about two minutes.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finished pieces</title>
+<style>
+  :root { --ink:#16131f; --paper:#fffaf2; --ok:#1f8a55; --unsure:#b9650a; --undone:#c0392b; --muted:#5d566b; --line:#e6dccb; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width:1100px; margin:0 auto; padding:24px 16px 80px; }
+  h1 { font-size:36px; margin:0 0 12px; }
+  table.summary { width:100%; border-collapse:collapse; margin-bottom:32px; }
+  table.summary td, table.summary th { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  section.piece { margin:44px 0; }
+  section.piece > h2 { font-size:30px; margin:0; }
+  .verdict { font-size:19px; margin:6px 0 4px; }
+  .open-link { display:inline-block; background:var(--ink); color:#fff; text-decoration:none; padding:8px 16px; border-radius:999px; font-weight:700; }
+  h3 { font-size:15px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:28px 0 10px; }
+  .status { font-weight:700; border-radius:999px; padding:2px 10px; font-size:13px; white-space:nowrap; }
+  .kept { background:#ddf3e6; color:var(--ok); }
+  .unsure { background:#fbecd7; color:var(--unsure); }
+  .undone { background:#fbe1dd; color:var(--undone); }
+  .notdone { background:#ece8f2; color:var(--muted); }
+  table.ledger, table.open { width:100%; border-collapse:collapse; }
+  table.ledger td, table.open td { padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .pair { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0 4px; }
+  .pair figure { margin:0; }
+  .pair img { width:100%; border-radius:10px; display:block; background:#eee; }
+  .pair figcaption { font-size:14px; color:var(--muted); }
+  .tablewrap { overflow-x:auto; }
+  @media (max-width:600px){ .pair { grid-template-columns:1fr; } h1 { font-size:28px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Finished pieces</h1>
+  <div class="tablewrap"><table class="summary">
+    <tr><th>Piece</th><th>Kept</th><th>Unsure</th><th>Undone</th><th>Not done</th><th>Open</th></tr>
+    <tr><td><a href="#piece-A">A · One Portland Day</a></td><td>5</td><td>1</td><td>0</td><td>1</td><td>4</td></tr>
+  </table></div>
+
+  <section class="piece" id="piece-A">
+    <h2>A · One Portland Day</h2>
+    <p class="verdict">The blind judge prefers the finished page in both orders.</p>
+    <a class="open-link" href="work/A/index.html">Open the finished page</a>
+
+    <h3>What happened to each approved item</h3>
+    <div class="tablewrap"><table class="ledger">
+      <tr><td>A1</td><td>Text sits on the notebook lines</td><td><span class="status kept">kept</span></td></tr>
+      <tr><td>A2</td><td>Dog icon redrawn</td><td><span class="status unsure">kept, judge unsure</span></td></tr>
+      <tr><td>A3</td><td>Torn paper on fewer sections</td><td><span class="status undone">undone</span> The judge preferred the before version in both orders.</td></tr>
+      <tr><td>A4</td><td>Footer graft</td><td><span class="status notdone">not done</span> The hour ran out.</td></tr>
+    </table></div>
+
+    <h3>Open list</h3>
+    <div class="tablewrap"><table class="open">
+      <!-- Order: approved but not done, judge unsure, cannot check here, next time. -->
+      <tr><td><strong>High</strong></td><td>Footer graft</td><td>Approved but not done: the hour ran out.</td></tr>
+      <tr><td>Medium</td><td>Real phone test</td><td>Cannot check here.</td></tr>
+    </table></div>
+
+    <h3>Before and after</h3>
+    <div class="pair">
+      <figure><img src="shots/A/before/example.jpg" alt="Before"><figcaption>Before: A1, notebook lines</figcaption></figure>
+      <figure><img src="shots/A/after/example.jpg" alt="After"><figcaption>After</figcaption></figure>
+    </div>
+  </section>
+</main>
+</body>
+</html>

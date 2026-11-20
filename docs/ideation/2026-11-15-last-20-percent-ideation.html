@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideation: The last 20% skill</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#0f1a2b; --panel:#16243a; --panel2:#1c2e4a; --ink:#eef3fb; --muted:#b4c2d8;
+  --sun:#ffb547; --sky:#5cc8ff; --rose:#ff6f61; --leaf:#5fd39a; --line:#2c4266;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){--bg:#f4f8ff;--panel:#ffffff;--panel2:#e8f0fd;--ink:#13223a;--muted:#46597a;--sun:#b9650a;--sky:#0b6fa8;--rose:#c0392b;--leaf:#1f8a55;--line:#c9d6ec;}
+}
+:root[data-theme="dark"]{--bg:#0f1a2b;--panel:#16243a;--panel2:#1c2e4a;--ink:#eef3fb;--muted:#b4c2d8;--sun:#ffb547;--sky:#5cc8ff;--rose:#ff6f61;--leaf:#5fd39a;--line:#2c4266;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:2.5rem 16px 4rem}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15}
+h1{font-size:2.6rem;font-weight:800;margin:.2rem 0 .6rem}
+h2{font-size:1.75rem;font-weight:800;margin:3rem 0 1rem;color:var(--sun)}
+h3{font-size:1.25rem;font-weight:600;margin:0 0 .6rem}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--sky);font-weight:700}
+.lede{color:var(--muted);font-size:1.05rem}
+details.meta{margin:1rem 0 2rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.6rem 1rem}
+details.meta dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;margin:.6rem 0 0}
+dt{font-weight:700;color:var(--muted)}
+dd{margin:0}
+article.idea{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.3rem;margin:1.2rem 0}
+article.idea dl{display:grid;grid-template-columns:7.5rem 1fr;gap:.5rem 1rem;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 .9rem}
+.chip{border-radius:999px;padding:.12rem .7rem;font-size:.82rem;font-weight:700;background:var(--panel2);color:var(--ink)}
+.chip.top{background:var(--sun);color:#1a1205}
+.jump{columns:2;gap:2rem;padding-left:1.2rem}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:.5rem .6rem;border-bottom:1px solid var(--line)}
+th{color:var(--muted)}
+code{font-size:.9em;background:var(--panel2);padding:.05rem .3rem;border-radius:4px}
+.figure{overflow-x:auto;margin:1rem 0;background:var(--panel2);border-radius:12px;padding:.8rem}
+footer.composition-signal{margin-top:3rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1rem}
+ul{padding-left:1.2rem}
+@media (max-width:560px){article.idea dl{grid-template-columns:1fr}.jump{columns:1}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="eyebrow">Ideation</div>
+  <h1>Ideation: The last 20% skill</h1>
+  <p><time datetime="2026-11-15">2026-11-15</time></p>
+  <p class="lede"><strong>Focus:</strong> a new skill that takes strong creative drafts (such as the three phils.app pages that the creativity skill made) and finishes the last 20%. It finds and lists the small details, fixes them, and has an independent agent verify the result. It must work for any creative medium, not only web pages.</p>
+</header>
+<details class="meta"><summary>Document metadata</summary>
+  <dl><dt>date</dt><dd>2026-11-15</dd><dt>topic</dt><dd>last-20-percent</dd><dt>mode</dt><dd>repo-grounded</dd></dl>
+</details>
+
+<section id="grounding-context">
+<h2>Grounding Context</h2>
+<h3>Codebase Context</h3>
+<ul>
+  <li><strong>Where creativity stops.</strong> <code>creativity/SKILL.md</code> stops at a storyboard of three finals. Each final lists "what is weak (include anything not verified)" and "where it could go next", and leaves that work to the user (SKILL.md:137).</li>
+  <li><strong>The judge.</strong> It is an isolated subagent (<code>agents/scorer.md</code>) that names one <code>strongest_thing</code>, at most three <code>biggest_gaps</code>, and a <code>remove</code> list that no later step uses. It folds execution faults into the taste score (scorer.md:33). Its drift goes both ways: about 0.6 too high in run 2 and 1 to 2 points too low in run 3 (scorer.md:47).</li>
+  <li><strong>Protection.</strong> Only one thing is protected between drafts: "the draft's strongest thing … keep it untouched" (SKILL.md:115).</li>
+  <li><strong>Lost ideas.</strong> Good ideas are lost across options: "Good ideas from a replaced direction (the Goodnight footer) are worth keeping" (calibration/web/README.md:49).</li>
+  <li><strong>What the user rewarded.</strong> The user's 8 to 9 came from crafted details in standard parts: "Details in standard parts count: the menu, contact and footer" (README:48).</li>
+  <li><strong>Not checked in run 3.</strong> Real phones, motion (judged from stills), frame rate (only two pages, because a hidden pane cannot draw frames), mock forms, outside links, and about 50 MP of images.</li>
+  <li><strong>Faults left in the finals.</strong> Monotony in the middle sections, hard cuts, overlapping labels, clip-art next to painted art, infinite CSS loops, repeated contact details, and small type.</li>
+  <li><strong>Parts to reuse.</strong> <code>references/media.md</code> already has per-medium craft areas and machine tells. <code>vlog-editor</code> has an approval loop: show the smallest preview, repair only the requested issue on the last liked version, and keep the originals.</li>
+</ul>
+<h3>External Context</h3>
+<ul>
+  <li><strong>Linear "Quality Wednesdays":</strong> small fixes, a target of about 30 minutes each, a 1-hour cap, aimed at things that "felt off". More than 1,000 fixes changed how the product feels. Papercut programs (Ubuntu, GitHub) worked the same way.</li>
+  <li><strong>Editing stages run in order:</strong> developmental, line, copy, proofread. Later passes do not reopen earlier ones. Film locks the picture, then grades, mixes and runs QC (technical and content), with a QC report at delivery.</li>
+  <li><strong>Mastering:</strong> match the loudness of the reference tracks before you compare, and test on many speakers.</li>
+  <li><strong>Game QA:</strong> severity is separate from priority. The gate is zero open Critical items. A casebook of resolved examples ends debates about severity.</li>
+  <li><strong>Checklists (Gawande):</strong> do-confirm lists of the few killer items that people really miss.</li>
+  <li><strong>LLM judges and self-refine loops:</strong> gains plateau after 2 to 3 rounds, and repeated refinement causes regressions and bloat. Judges prefer their own output. Pairwise comparison must swap the order. A pointwise 8 can lose a pairwise comparison to a 7.</li>
+</ul>
+</section>
+
+<section id="topic-axes">
+<h2>Topic Axes</h2>
+<ol>
+  <li>Finding and listing the last 20%</li>
+  <li>Fixing without breaking (and keeping the soul)</li>
+  <li>Independent verification and scoring</li>
+  <li>Working across any medium</li>
+  <li>Stopping, the user, and delivery</li>
+</ol>
+</section>
+
+<section id="ranked-ideas">
+<h2>Ranked Ideas</h2>
+<ul class="jump">
+  <li><a href="#i1">I1. Lock, then finish: one spine for every medium</a></li>
+  <li><a href="#i2">I2. Two ledgers: snags and delights</a></li>
+  <li><a href="#i3">I3. Soul register</a></li>
+  <li><a href="#i4">I4. Harvest and graft from every draft</a></li>
+  <li><a href="#i5">I5. Cert sheet under real conditions</a></li>
+  <li><a href="#i6">I6. Pairwise blind verdict, and the user as last judge</a></li>
+  <li><a href="#i7">I7. Stop rule with placards</a></li>
+</ul>
+
+<article class="idea" id="i1">
+  <h3>I1. Lock, then finish: one spine for every medium</h3>
+  <div class="chips"><span class="chip top">Top pick</span><span class="chip">Axis 2 · Fixing without breaking</span><span class="chip">Confidence 85%</span><span class="chip">Complexity Medium</span></div>
+  <div class="figure">
+    <svg viewBox="0 0 720 150" width="720" height="150" role="img" aria-label="Finishing spine: entry check, lock, harvest and protect, cert, polish passes, pairwise verdict, hand-over">
+      <g font-family="Atkinson Hyperlegible, sans-serif" font-size="13" fill="currentColor">
+        <rect x="6" y="40" width="88" height="60" rx="10" fill="none" stroke="#5cc8ff" stroke-width="2"/>
+        <text x="50" y="66" text-anchor="middle">Entry</text><text x="50" y="84" text-anchor="middle">check</text>
+        <rect x="108" y="40" width="88" height="60" rx="10" fill="none" stroke="#ffb547" stroke-width="2"/>
+        <text x="152" y="66" text-anchor="middle">Picture</text><text x="152" y="84" text-anchor="middle">lock</text>
+        <rect x="210" y="40" width="100" height="60" rx="10" fill="none" stroke="#5fd39a" stroke-width="2"/>
+        <text x="260" y="66" text-anchor="middle">Harvest +</text><text x="260" y="84" text-anchor="middle">protect</text>
+        <rect x="324" y="40" width="88" height="60" rx="10" fill="none" stroke="#ff6f61" stroke-width="2"/>
+        <text x="368" y="66" text-anchor="middle">Cert</text><text x="368" y="84" text-anchor="middle">sheet</text>
+        <rect x="426" y="40" width="88" height="60" rx="10" fill="none" stroke="#5cc8ff" stroke-width="2"/>
+        <text x="470" y="66" text-anchor="middle">Polish</text><text x="470" y="84" text-anchor="middle">passes</text>
+        <rect x="528" y="40" width="88" height="60" rx="10" fill="none" stroke="#ffb547" stroke-width="2"/>
+        <text x="572" y="66" text-anchor="middle">Pairwise</text><text x="572" y="84" text-anchor="middle">verdict</text>
+        <rect x="630" y="40" width="84" height="60" rx="10" fill="none" stroke="#5fd39a" stroke-width="2"/>
+        <text x="672" y="66" text-anchor="middle">QC</text><text x="672" y="84" text-anchor="middle">hand-over</text>
+        <g stroke="currentColor" stroke-width="1.5"><line x1="94" y1="70" x2="106" y2="70"/><line x1="196" y1="70" x2="208" y2="70"/><line x1="310" y1="70" x2="322" y2="70"/><line x1="412" y1="70" x2="424" y2="70"/><line x1="514" y1="70" x2="526" y2="70"/><line x1="616" y1="70" x2="628" y2="70"/></g>
+        <text x="152" y="128" text-anchor="middle" font-size="12">structural gap → back to creativity</text>
+      </g>
+    </svg>
+  </div>
+  <dl>
+    <dt>Description</dt><dd>The skill is one medium-neutral sequence, and medium packs plug into it. (1) <strong>Entry check:</strong> is this draft ready to finish (the user picked it, and the judge finds no structural gap)? (2) <strong>Picture lock:</strong> sort every gap into structural (monotony, hard cuts, a weak idea) or surface (type, spacing, labels, loops). Structural gaps go back to creativity, not to polish. (3) Harvest and protect (I3, I4). (4) Cert sheet (I5). (5) Polish passes in a fixed order: joins and rhythm, then content and copy (including cuts and repeats), then surface, then a proofread on the final render. A later pass cannot reopen an earlier one, and a new idea goes to a "next version" list. (6) Pairwise verdict (I6). (7) A hand-over with placards (I7).</dd>
+    <dt>Axis</dt><dd>Fixing without breaking</dd>
+    <dt>Basis</dt><dd><code>external:</code> the editing stages (developmental, line, copy, proofread), where later passes do not reopen earlier ones, and film's picture lock. <code>direct:</code> scorer.md:28-33 already names the structural faults. SKILL.md:115 makes draft 2 both fix and add, so creativity never stops adding.</dd>
+    <dt>Rationale</dt><dd>This is the answer to "what is the skill". It gives the same steps to a song, a level, a story and a page. Locking first stops wasted polish on faults that need a redesign. It also gives a clear line between the two skills: creativity changes the idea, and this skill finishes it.</dd>
+    <dt>Downsides</dt><dd>Seven stages can be too much process for a small job. Each stage must be optional by size (see I7). The line between structural and surface faults needs examples, or the judge will argue both ways.</dd>
+    <dt>Confidence</dt><dd>85%</dd>
+    <dt>Complexity</dt><dd>Medium</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i2">
+  <h3>I2. Two ledgers: snags and delights, seeded by an escape log</h3>
+  <div class="chips"><span class="chip">Axis 1 · Finding and listing</span><span class="chip">Confidence 80%</span><span class="chip">Complexity Medium</span></div>
+  <dl>
+    <dt>Description</dt><dd>The last 20% is two lists, not one. The <strong>snag ledger</strong> holds things that are wrong, with no cap at 3. Each row has the symptom, a fault class (collision, repetition, seam, convention, weight, unverified), severity, a check, a fix and a before/after capture. One pass looks only at the joins between parts ("cue-to-cue"). The <strong>delight ledger</strong> lists standard parts that have no crafted detail yet: menu, footer, contact, dark mode, loading state, credits, title card, chapter openers. For each one it asks: "what small detail here holds the concept?" Each run is seeded from a per-medium <strong>escape log</strong> (faults the user found that the skill missed) and a <strong>severity casebook</strong> of resolved examples. Both grow after every run.</dd>
+    <dt>Axis</dt><dd>Finding and listing the last 20%</dd>
+    <dt>Basis</dt><dd><code>direct:</code> the judge returns at most 3 gaps (scorer.md:68). The user's favourites (the sun-dial menu, the postcard contact, the UV-lamp dark mode) were all details in standard parts: "Details in standard parts count" (README:48). <code>external:</code> Linear's "felt off" list, Gawande's killer items, and game QA's resolved-example casebook.</dd>
+    <dt>Rationale</dt><dd>A list of defects only can take work to a clean 7. The jump to 8 or 9 came from delights in conventions. The escape log makes the skill find more each run, in every medium.</dd>
+    <dt>Downsides</dt><dd>The delight ledger can cause bloat, and it conflicts with cutting first. The pass order (I1) must decide whether cuts come before adds. The ledgers need careful writing per medium.</dd>
+    <dt>Confidence</dt><dd>80%</dd>
+    <dt>Complexity</dt><dd>Medium</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i3">
+  <h3>I3. Soul register: name what may not be touched</h3>
+  <div class="chips"><span class="chip">Axis 2 · Fixing without breaking</span><span class="chip">Confidence 80%</span><span class="chip">Complexity Low</span></div>
+  <dl>
+    <dt>Description</dt><dd>Like a listed building, the work has protected features. Before the first fix, the skill writes a register: the judge's <code>strongest_thing</code>, every detail the user praised in their own words, and every grafted detail. Each fix is a small patch that can be undone. After each batch, a check marks each protected item as intact, weaker or gone, and any fix that makes an item weaker is reverted.</dd>
+    <dt>Axis</dt><dd>Fixing without breaking</dd>
+    <dt>Basis</dt><dd><code>direct:</code> today one item is protected (SKILL.md:115). The user's words name many more (README:44-49). <code>external:</code> self-refine loops cause regressions and bloat. The rules of heritage listing and art conservation (reversible, separate patches).</dd>
+    <dt>Rationale</dt><dd>Polish fails most often by sanding off the thing the user loved. Uniform fixes such as "same type on every heading" or "regular rhythm" hit the odd, loved details first.</dd>
+    <dt>Downsides</dt><dd>The check costs an extra judge call per batch. Some loved details are also faulty (for example a label hidden under clouds), so the register needs an "improve but keep" status.</dd>
+    <dt>Confidence</dt><dd>80%</dd>
+    <dt>Complexity</dt><dd>Low</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i4">
+  <h3>I4. Harvest and graft from every draft</h3>
+  <div class="chips"><span class="chip">Axis 5 · The user and delivery</span><span class="chip">Confidence 75%</span><span class="chip">Complexity Medium</span></div>
+  <dl>
+    <dt>Description</dt><dd>Like comping a vocal from the best takes, the first step lists the strongest details across all sibling options, earlier drafts and replaced directions. The user approves which ones move into the chosen final. Each graft is re-made in the final's own art direction, not pasted in. It stays only if the pairwise verdict prefers the result.</dd>
+    <dt>Axis</dt><dd>Stopping, the user, and delivery</dd>
+    <dt>Basis</dt><dd><code>direct:</code> "Good ideas from a replaced direction (the Goodnight footer) are worth keeping: the storyboard should list them so they can move into the chosen option" (README:49). A direction's final is only its highest-scoring draft (SKILL.md:120). <code>external:</code> vocal comping and a film editor's selects reel.</dd>
+    <dt>Rationale</dt><dd>The user's best-loved details were spread across options. A graft costs much less than a new build, and it puts the user's taste, not the machine's, into the final.</dd>
+    <dt>Downsides</dt><dd>A graft can break the final's coherence (one art direction). It needs a user checkpoint, so it adds a short wait.</dd>
+    <dt>Confidence</dt><dd>75%</dd>
+    <dt>Complexity</dt><dd>Medium</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i5">
+  <h3>I5. Cert sheet under real conditions, apart from taste</h3>
+  <div class="chips"><span class="chip">Axis 4 · Any medium</span><span class="chip">Confidence 75%</span><span class="chip">Complexity Medium</span></div>
+  <dl>
+    <dt>Description</dt><dd>This is the same idea as console certification. Each medium pack names (a) its <strong>conditions of use</strong> ("the body" the work is fitted on). Web: phone width, a visible tab, a slow network, reduced motion, keyboard only. Music: small speakers and mono. Fiction: read aloud. Game: 30 fps and a controller. Print: actual size. And (b) <strong>binary checks</strong>, mostly as scripts, and a <strong>task walker</strong> agent that does the real jobs (send the form, open the menu, finish the level) and reports pass or fail with proof. A recurring fault becomes a new script. The gate: all cert items pass before taste is judged. Delivery includes a QC report split into technical and content, where each item is green, red, or "cannot check here".</dd>
+    <dt>Axis</dt><dd>Working across any medium</dd>
+    <dt>Basis</dt><dd><code>direct:</code> scorer.md:33 folds execution faults into taste. Everything on the run-3 "not checked" list is about function, not taste. SKILL.md:107 already requires a visible tab for frame rate. <code>external:</code> film QC (technical and content, with a QC report), translation checks in mastering, and console cert lists.</dd>
+    <dt>Rationale</dt><dd>A taste judge cannot see a mock form or 50 MP of images in a still capture. Scripts are cheap, repeatable and cannot be flattered. This is also the part of the skill that changes per medium, so the rest can stay generic.</dd>
+    <dt>Downsides</dt><dd>Each medium pack takes real work to write. Some conditions need the user, for example a real phone or real speakers. The first packs will lean towards web until a non-web pilot is run.</dd>
+    <dt>Confidence</dt><dd>75%</dd>
+    <dt>Complexity</dt><dd>Medium</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i6">
+  <h3>I6. Pairwise blind verdict, a blind finder, and the user as last judge</h3>
+  <div class="chips"><span class="chip">Axis 3 · Verification</span><span class="chip">Confidence 75%</span><span class="chip">Complexity Low</span></div>
+  <dl>
+    <dt>Description</dt><dd>Verification is three parts:
+      <ul>
+        <li><strong>Pairwise verdict.</strong> A fresh judge sees the before and after captures under the same conditions, without labels, twice with the order swapped. It judges each ledger item and the whole work. A fix counts only if it wins in both orders. The fixer never sees what the judge praised.</li>
+        <li><strong>Blind finder.</strong> A second fresh agent gets only the finished work, not the ledger. It must find the last-20% items that are left, and what it finds measures the ledger's miss rate.</li>
+        <li><strong>The user.</strong> The user is the last judge. They can mark each fix keep or revert on fast before/after cards, and their verdicts go into calibration.</li>
+      </ul></dd>
+    <dt>Axis</dt><dd>Independent verification and scoring</dd>
+    <dt>Basis</dt><dd><code>direct:</code> the drift goes both ways (scorer.md:47; README:35). "Never raise a score by arguing with the judge or re-scoring until it changes" (SKILL.md:126). The user scored 7 to 9 when the judge scored 6.4 to 7.1. <code>external:</code> research shows that a pairwise comparison needs an order swap, and that a same-model critic shares the maker's blind spots.</dd>
+    <dt>Rationale</dt><dd>A last-20% change can be worth about 0.3 points, which is smaller than 1 to 2 points of drift. So an absolute score cannot see it, but a pairwise comparison can. The blind finder checks the listing step itself, not only the fixes.</dd>
+    <dt>Downsides</dt><dd>Two orders and two agents cost more judge calls. The keep/revert cards give the user more to do, so they must be optional.</dd>
+    <dt>Confidence</dt><dd>75%</dd>
+    <dt>Complexity</dt><dd>Low</dd>
+  </dl>
+</article>
+
+<article class="idea" id="i7">
+  <h3>I7. Stop rule with placards</h3>
+  <div class="chips"><span class="chip">Axis 5 · Stopping and delivery</span><span class="chip">Confidence 70%</span><span class="chip">Complexity Low</span></div>
+  <dl>
+    <dt>Description</dt><dd>The exit is fixed before the work starts:
+      <ul>
+        <li>zero open Critical items;</li>
+        <li>each Major item fixed, or accepted in writing;</li>
+        <li>one round per severity tier, and each fix timeboxed at about 30 minutes with a 1-hour cap (a larger fix becomes a "next version" note);</li>
+        <li>stop after two rounds with no pairwise gain.</li>
+      </ul>
+      Like an aircraft's minimum equipment list, each item left open ships with a placard: its severity, why it was deferred, and the fix. The size modes rank items by "visible in the first five seconds" × "cheap to fix": small fixes the top 5, and large fixes the full ledger plus the grafts.</dd>
+    <dt>Axis</dt><dd>Stopping, the user, and delivery</dd>
+    <dt>Basis</dt><dd><code>external:</code> game QA's zero-Critical gate, Linear's caps, the minimum equipment list, and the self-refine plateau after 2 to 3 rounds. <code>direct:</code> no final in run 3 reached 8, and the only stop rule today is a score gate (SKILL.md:121-126). "First five seconds" (scorer.md:18).</dd>
+    <dt>Rationale</dt><dd>Without a stop rule, the last 20% has no end and polishing starts to hurt the work. With placards, the user gets an honest list instead of a hidden risk.</dd>
+    <dt>Downsides</dt><dd>It needs a clear severity scheme, which the casebook in I2 must supply. A fixed timebox can stop a fix that matters.</dd>
+    <dt>Confidence</dt><dd>70%</dd>
+    <dt>Complexity</dt><dd>Low</dd>
+  </dl>
+</article>
+</section>
+
+<section id="rejection-summary">
+<h2>Rejection Summary</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Idea</th><th>Reason Rejected</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Ablation audit: remove each element and re-score</td><td>Only reasoned. It costs many builds and judge calls, and against the light-CPU preference it adds judge noise. Its useful part, finding the load-bearing details, is covered by I3.</td></tr>
+<tr><td>2</td><td>Shared judge core with creativity, one calibration store</td><td>A refactor, not a finishing move. Worth doing later as a separate project.</td></tr>
+<tr><td>3</td><td>Subtract-first pass (delete before adding)</td><td>Thin as its own idea, and it risks "emptiness is not restraint". Merged into I1 as part of the content pass.</td></tr>
+<tr><td>4</td><td>Fault-class router (six classes)</td><td>Mostly a subset of the scorer's faults and the media tells. Merged into I2 as a field.</td></tr>
+<tr><td>5</td><td>Cue-to-cue pass on joins only</td><td>One pass, not its own idea. Merged into I2.</td></tr>
+<tr><td>6</td><td>Not-checked debt register and QC report</td><td>Mostly a delivery format. Merged into I5 and I7.</td></tr>
+<tr><td>7</td><td>Flip-book keep/revert approvals</td><td>Merged into I6 as an optional user step.</td></tr>
+<tr><td>8</td><td>Finish sizes small/medium/large</td><td>A setting, not a design question. Merged into I7.</td></tr>
+<tr><td>9</td><td>Blind finder audits the list</td><td>Merged into I6.</td></tr>
+<tr><td>10</td><td>Combination: two ledgers</td><td>Became I2.</td></tr>
+<tr><td>11</td><td>Combination: the finishing spine</td><td>Became I1.</td></tr>
+</tbody>
+</table></div>
+<p><strong>Gaps the critic noted:</strong></p>
+<ul>
+  <li>Most examples are for the web. A non-web pilot (for example a short story or a song) should prove that the skill works in other media before it is committed.</li>
+  <li>The entry rule (which drafts are ready to finish) is now part of I1.</li>
+</ul>
+</section>
+
+<footer class="composition-signal">Composed 2026-11-15 by ce-ideate from the user's request for a "last 20%" finishing skill, grounded on <code>creativity/</code> in this repo.</footer>
+</main>
+</body>
+</html>

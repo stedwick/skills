@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+  Approval page template for the finishing skill.
+  Fill it from list.json. Copy one <section class="piece"> per piece and one
+  <article class="card"> per item. Image paths are relative to the run folder.
+  Keep the section order: fixes, grafts, protected, next time and too big.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approve the fixes</title>
+<style>
+  :root { --ink:#16131f; --paper:#fffaf2; --accent:#ff5a36; --calm:#2f6bff; --muted:#5d566b; --line:#e6dccb; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header.top { position:sticky; top:0; z-index:2; background:var(--ink); color:#fff; padding:12px 16px; display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; }
+  header.top strong { font-size:18px; }
+  header.top a { color:#fff; text-decoration:none; border:1px solid #ffffff55; border-radius:999px; padding:4px 12px; }
+  header.top a span { color:#ffb7a5; }
+  main { max-width:1100px; margin:0 auto; padding:24px 16px 80px; }
+  .reply { background:#fff; border:2px solid var(--ink); border-radius:12px; padding:12px 16px; margin-bottom:28px; }
+  .reply code { background:#f2ebe0; padding:2px 6px; border-radius:6px; }
+  section.piece { margin:40px 0; }
+  section.piece > h2 { font-size:32px; margin:0 0 4px; }
+  .notready { background:#ffe9e3; border-radius:12px; padding:12px 16px; }
+  h3 { font-size:15px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:28px 0 10px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+  article.card { background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
+  article.card img { width:100%; height:180px; object-fit:cover; background:#eee; display:block; }
+  .card .body { padding:12px 14px 14px; display:flex; flex-direction:column; gap:6px; }
+  .card .id { font-weight:800; font-size:20px; }
+  .card .title { font-weight:700; }
+  .card .result { color:var(--ink); }
+  .card .meta { color:var(--muted); font-size:14px; }
+  .tag { display:inline-block; border-radius:999px; padding:2px 10px; font-size:13px; font-weight:700; }
+  .tag.calm { background:#dfe8ff; color:var(--calm); }
+  .tag.protected { background:#ffe9e3; color:#b2361b; }
+  ul.plain { margin:0; padding-left:20px; }
+  @media (max-width:600px){ section.piece > h2 { font-size:26px; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <strong>Approve the fixes</strong>
+  <!-- One link per piece: name, then counts. -->
+  <a href="#piece-A">A · One Portland Day <span>5 fixes · 2 grafts · 3 next time</span></a>
+</header>
+<main>
+  <div class="reply">
+    <strong>How to reply in chat:</strong> <code>ok all</code> or
+    <code>ok A1 A2; drop B3; edit C2: your words</code>.
+    Items you do not mention are removed.
+  </div>
+
+  <section class="piece" id="piece-A">
+    <h2>A · One Portland Day</h2>
+    <!-- If the piece is not ready, replace the lists with:
+    <p class="notready">Not ready: reason.</p> -->
+
+    <h3>Fixes, in order</h3>
+    <div class="cards">
+      <article class="card">
+        <img src="shots/A/before/example.jpg" alt="Before: the notebook lines and the text">
+        <div class="body">
+          <div class="id">A1</div>
+          <div class="title">Make the text sit on the notebook lines</div>
+          <div class="result">After: each line of text sits on a ruled line. The paper and its colour stay.</div>
+          <div class="meta">10 min · alignment · high</div>
+          <!-- Optional tags: -->
+          <div><span class="tag calm">calms the concept</span> <span class="tag protected">touches: dog icon</span></div>
+          <div class="meta">Merged two findings. <!-- merge or conflict note --></div>
+        </div>
+      </article>
+    </div>
+
+    <h3>Grafts offered</h3>
+    <div class="cards">
+      <!-- Same card shape: donor capture, then how it is re-made here. -->
+    </div>
+
+    <h3>Protected (will not be removed)</h3>
+    <ul class="plain">
+      <li>Pop-up menu bar with the sun dial · keep</li>
+    </ul>
+
+    <h3>Next time and too big</h3>
+    <ul class="plain">
+      <li>Title · 20 min · below the 45-minute cut</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

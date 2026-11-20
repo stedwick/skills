@@ -136,4 +136,4 @@ One page (or document) with the three finals side by side, given to the user in 
 - Score, its parts, and the path from draft 1 to the final.
 - **What is good**, **what is weak** (include anything not verified), and **where it could go next** (two or three directions).
 
-Then your recommendation in one or two sentences, and what was replaced or killed. Ask the user to score each final themselves, and add their scores and words to `calibration/` (small copies of the captures, the score, their words, the lesson) so the next run is calibrated better. If their words do not match the label they used, check the captures and say which one you think they meant.
+Then your recommendation in one or two sentences, and what was replaced or killed. Ask the user to score each final themselves, and add their scores and words to `calibration/` (small copies of the captures, the score, their words, the lesson) so the next run is calibrated better. If their words do not match the label they used, check the captures and say which one you think they meant. To finish the chosen finals (the last 20%: restraint, alignment, art quality, readability), use the `finishing` skill.
