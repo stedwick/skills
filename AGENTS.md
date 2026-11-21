@@ -19,3 +19,5 @@
 **Browsers** Most harnesses like ChatGPT or Claude come with built-in browsers now, so prefer those. If you don't have a browser, use agent-browser. Search the web using the built-in tool. Otherwise, use Exa through Executor.
 
 **Headless Chrome** For headless screenshots or scripted browsing, use Google's headless-only Chrome at `~/.cache/chrome-headless-shell/chrome-headless-shell-mac-arm64/chrome-headless-shell` (Chrome for Testing). It shows no Dock icon. Do not launch `/Applications/Google Chrome.app` headless: each copy pops up in my Dock.
+
+**Image generation** To make AI images (photos, art), use Codex CLI with my ChatGPT plan. Run it from the output folder: `codex exec --skip-git-repo-check -s workspace-write "Generate an image: <prompt>. Save it as <name>.png in the current directory."` Codex needs network access and `~/.codex`, so run it outside the sandbox. Each image counts against my ChatGPT usage limits.

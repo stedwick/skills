@@ -3,3 +3,5 @@ creativity-workspace/
 creativity-runs/
 finishing-runs/
 .claude/
+
+__pycache__/
