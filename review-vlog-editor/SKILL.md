@@ -25,13 +25,14 @@ First read the shared [vlog editor](../vlog-editor/SKILL.md). Apply this skill t
 ## Product and tool reviews
 
 - For a roundup (the Nov 2026 agent-harness review), show each product's official icon at large size. When one section covers two products, show both icons. Do not show "01 / 11"-style counters. Give each section card a short category label.
-- Callouts: script one for each named product, model, or person at the word where he says it, with official media (product preview images, browser-framed site screenshots). Do not show a callout that does not match the speech; drop it instead. People get a name card with a logo, never a web photo; ask Philip for a photo if he wants one.
+- Callouts: script one for each named product, model, or person at the word where he says it, with official media (product preview images, browser-framed site screenshots). Do not show a callout that does not match the speech; drop it instead. After every re-cut, check each callout again at its new place: moving a passage once left a callout with the wrong icon and site over unrelated speech. People get a name card with a logo, never a web photo; ask Philip for a photo if he wants one.
 - He liked a closing verdict sheet: one line per product, rows light up as he names them, pairs he groups are bracketed together, side mentions sit last under an "honorable mention" divider, and his favorite gets a badge. Iterate graphics in drafts; each draft should be clearly richer (moving glow borders, labels, staggered reveals), not just tidier.
 - Thumbnails: use his exact wording and line breaks. For his face cutout, refine the background-removal mask with closed-form matting (pymatting on a trimap from the mask) so hair and a moving finger look clean, and remove leftover background patches.
 
 ## Vertical (Shorts) version
 
 - Make it a self-contained short review, not a copy of the long video's summary: hook, one short bite per item (about 10–15 s), his favorite. Cut repeats ("Claude, ChatGPT" said twice) and filler like "but I'm gonna respect your time" when he asks for tight.
-- Frame 0 is a title card that works as the thumbnail. Screen on top, face below, as plain rectangles with no borders; graphics (progress icons, name card) sit in the face area above his head; subtitles at the bottom.
+- Frame 0 is a title card that works as the thumbnail. When the long video's summary sheet is reused as a slide, give it a neutral title (not "The Verdict"). Screen on top, face below, as plain rectangles with no borders; graphics (progress icons, name card) sit in the face area above his head; subtitles at the bottom.
 - Screen shots start as the full 16:9 frame letterboxed, then ease into what he is talking about (often the left sidebar, a picker, a list). Choose zoom targets by looking at frames, not by motion detection alone.
+- Burn in subtitles from the word timings: 1–3 words at a time, the current word highlighted, brand names spelled as the products spell them, and no lone word left on screen when it can join its neighbors.
 - He approved a 2160×3840 final for the Nov 2026 harness short.
