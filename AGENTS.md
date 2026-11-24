@@ -1,23 +1,15 @@
-**Important** Be succinct. I like bulleted lists. Use ASD-STE 100 simplified technical English. Keep me up to date with what you're doing, what's been done, what's to do, any blockers, and what you need me to do, using 💻 & ✅ & ⏳ & ❌ & 🙋‍♂️.
-
-**Explaining things to me**
-- Start with the answer in one plain sentence. Details come after, only if needed.
-- Write for a smart person who is not an expert in this topic. No jargon. If a technical term is unavoidable, explain it in a few words the first time.
-- Keep it short: at most 5 bullets, each one line. No walls of text.
-- Do not show logs, stack traces, file paths, or code unless I ask for them.
-- Tell me what it means for me and what I should do, not how it works inside.
-- If I need to do something, give exact steps: what to click or type.
-- Before you send, reread it: would a non-expert understand it on the first read? If not, make it simpler.
-- If I want more detail, I will ask.
-
 **Simplify** Always try the simplest possible solution first. Don't go with your first draft. Think about it and come up with a second draft that's simpler.
 
-**Dev servers** Use portless at `--tld dev` for running dev servers.
+**Dev servers** Use portless `portless --help` at `--tld dev` for running dev servers.
 
-**Git Butler** Use git butler to manage git unless otherwise specified.
+**Git Butler** Use git butler `but skill` to manage git unless otherwise specified. Use `gh` CLI for GitHub stuff.
 
-**Browsers** Most harnesses like ChatGPT or Claude come with built-in browsers now, so prefer those. If you don't have a browser, use agent-browser. Search the web using the built-in tool. Otherwise, use Exa through Executor.
+**Browsers** Prefer your built-in browsers. If you don't have a browser, use agent-browser `agent-browser skills get core`. Search the web using your built-in tool first. Use Exa through Executor if you need a deeper search. Prefer no-sound.
 
-**Headless Chrome** For headless screenshots or scripted browsing, use Google's headless-only Chrome at `~/.cache/chrome-headless-shell/chrome-headless-shell-mac-arm64/chrome-headless-shell` (Chrome for Testing). It shows no Dock icon. Do not launch `/Applications/Google Chrome.app` headless: each copy pops up in my Dock.
+**Headless Chrome** For headless screenshots or advanced scripted browsing, use agent-browser w/ Google's headless-only Chrome at `~/.cache/chrome-headless-shell/chrome-headless-shell-mac-arm64/chrome-headless-shell` (Chrome for Testing). If installed in a different place, use that. If not installed, ask the user.
 
-**Image generation** To make AI images (photos, art), use Codex CLI with my ChatGPT plan. Run it from the output folder: `codex exec --skip-git-repo-check -s workspace-write "Generate an image: <prompt>. Save it as <name>.png in the current directory."` Codex needs network access and `~/.codex`, so run it outside the sandbox. Each image counts against my ChatGPT usage limits.
+**Image generation** Prefer your own built-in tool, otherwise use Codex CLI with my ChatGPT plan. Run it from the output folder: `codex exec --skip-git-repo-check -s workspace-write "Generate an image: <prompt>. Save it as <name>.png in the current directory."` Codex needs network access and `~/.codex`, so run it outside the sandbox.
+
+**Executor** Use Executor to access my additional signed-in tools like Exa or ElevenLabs. If it's less than $1, you have permission without asking.
+
+**Monid** Use `monid --help` for additional premium tools. This also has ElevenLabs. If it's less than $1, you have permission without asking.
