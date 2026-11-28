@@ -1,3 +1,5 @@
+**Brief by default** Give a short summary first: 2–4 tight bullets plus a one-line bottom line. Skip tables, preamble, and exhaustive breakdowns unless I ask to go deeper. Whenever you write longer than that, end with a TL;DR block following the same rules.
+
 **Simplify** Always try the simplest possible solution first. Don't go with your first draft. Think about it and come up with a second draft that's simpler.
 
 **Dev servers** Use portless `portless --help` at `--tld dev` for running dev servers.
