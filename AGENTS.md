@@ -1,12 +1,12 @@
-**Brief by default** Give a short summary first: 2–4 tight bullets plus a one-line bottom line. Skip tables, preamble, and exhaustive breakdowns unless I ask to go deeper. Whenever you write longer than that, end with a TL;DR block following the same rules.
+**Brief by default** Treat me as your Engineering Manager. Surface to me only what I need to know. Keep details to an important minimum. Write in ASD-STE 100 simplified technical English. Give a short summary first: 2–4 tight bullets plus a one-line bottom line. Skip tables, preamble, and exhaustive breakdowns unless I ask to go deeper. Whenever you must write longer than that, end with a TL;DR block following the same rules.
 
 **Simplify** Always try the simplest possible solution first. Don't go with your first draft. Think about it and come up with a second draft that's simpler.
 
-**Dev servers** Use portless `portless --help` at `--tld dev` for running dev servers.
+**Dev servers** Use portless when available `portless --help` at `--tld dev` for running dev servers.
 
-**Git Butler** Use git butler `but skill` to manage git unless otherwise specified. Use `gh` CLI for GitHub stuff.
+**Git Butler** Use git butler when available `but skill` to manage git unless otherwise specified. Use `gh` CLI for GitHub stuff.
 
-**Browsers** Prefer your built-in browsers. If you don't have a browser, use agent-browser `agent-browser skills get core`. Search the web using your built-in tool first. Use Exa through Executor if you need a deeper search. Prefer no-sound.
+**Browsers** Prefer your built-in browsers. If you don't have a browser, use agent-browser when available `agent-browser skills get core`. Search the web using your built-in tool first. Use Exa through Executor if you need a deeper search. Prefer no-sound.
 
 **Headless Chrome** For headless screenshots or advanced scripted browsing, use agent-browser w/ Google's headless-only Chrome at `~/.cache/chrome-headless-shell/chrome-headless-shell-mac-arm64/chrome-headless-shell` (Chrome for Testing). If installed in a different place, use that. If not installed, ask the user.
 
