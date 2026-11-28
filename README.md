@@ -53,4 +53,4 @@ Makes your agent write code in a functional style, in any language: small named 
 
 I use this to edit my own videos, so it's built around my setup. Fork it and change it to fit yours.
 
-It turns raw camera, mic, and OBS recordings into a finished video—transcript, editable script, synced cuts, cleaner audio, graphics, thumbnail, and 4K export—with specialized guides in `references/` for **reviews** (book, film, game, and product reviews) and **Let's Plays** (OBS tracks, facecam, game sound, and chess puzzles).
+It turns raw camera, mic, and OBS recordings into a finished video—transcript, editable script, synced cuts, cleaner audio, graphics, thumbnail, and 4K export—with specialized guides in `references/` for **news** (weekly tech news roundups and vertical news reels), **reviews** (book, film, game, and product reviews), and **Let's Plays** (OBS tracks, facecam, game sound, and chess puzzles).
