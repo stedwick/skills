@@ -1,11 +1,11 @@
 ---
 name: vlog-editor
-description: Edit Philip's vlogs from camera and microphone recordings, including transcripts, scripts, synced cuts, audio, graphics, thumbnails, previews, and final exports. Use for talking-head vlogs or as the shared workflow for gameplay and review videos.
+description: Edit Philip's vlogs from camera, microphone, and OBS recordings—including talking-head vlogs, book/film/game/product reviews, and gameplay, Let's Play, or chess-puzzle videos—covering transcripts, scripts, synced cuts, audio, graphics, thumbnails, previews, and final exports.
 ---
 
 # Vlog editor
 
-Use this shared workflow for Philip's video edits. For gameplay or chess, also read [Let's Play editor](../lets-play-editor/SKILL.md). For book, film, game, or other subject reviews, also read [Review vlog editor](../review-vlog-editor/SKILL.md). A specialized skill assumes this parent is already loaded; do not recurse between them. For other vlogs, use this skill alone. The current request and Philip's later feedback override examples and defaults.
+Use this shared workflow for Philip's video edits. For gameplay, Let's Play, or chess-puzzle videos, also read [Let's Play](references/lets-play.md) (do not load it for ordinary talking-head reviews merely because they use a facecam). For book, film, game, product, or other subject reviews, also read [Reviews](references/reviews.md) (if a game review is mainly a Let's Play, also read [Let's Play](references/lets-play.md)). For other vlogs, use this file alone. The current request and Philip's later feedback override examples and defaults.
 
 ## Work with Philip
 

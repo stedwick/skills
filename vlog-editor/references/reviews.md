@@ -1,17 +1,12 @@
----
-name: review-vlog-editor
-description: Edit Philip's book, film, game, or other subject-review vlogs into a coherent review using his recorded material. Use with vlog-editor; gameplay footage whose main purpose is a Let's Play also uses lets-play-editor.
----
+# Subject and product reviews
 
-# Review vlog editor
-
-First read the shared [vlog editor](../vlog-editor/SKILL.md). Apply this skill to subject reviews, including a talking-head book review with a separate microphone; do not assume an OBS gameplay track, facecam bubble, game audio, or a required outro card.
+Subject-review guidance extending the main vlog workflow for book, film, game, product, and tool reviews, including a talking-head review with a separate microphone; do not assume an OBS gameplay track, facecam bubble, game audio, or a required outro card.
 
 ## Shape the review
 
 - Examine the original recording and transcript. If requested, make a cohesive editable script before a rough cut, with stable paragraph IDs and original source times. Supply the raw uncut transcript separately. Preserve his opinions, humor, qualifications, and engaging observations; remove stutters and false starts without inventing speech.
 - Follow his requested length, section order, spoiler boundary, and exact opening/ending. For a book review, a useful starting structure is an intro, title, premise/mystery, setting and characters, themes, strengths and weaknesses, and verdict—but change or combine sections to suit the material and his direction. Place discussion of the mystery's payoff with the mystery when that is the intended structure. Restore useful omitted material in a natural place without introducing the same subject twice.
-- Keep transitions and cut speech as full phrases or continuous takes. Never use tiny audio patches to fabricate a clipped word. Use the waveform and inspect actual output edit boundaries as described in the parent skill. If no audio listening capability exists, do not claim subjective audio quality; provide focused previews for Philip to hear.
+- Keep transitions and cut speech as full phrases or continuous takes. Never use tiny audio patches to fabricate a clipped word. Use the waveform and inspect actual output edit boundaries as described in the main skill. If no audio listening capability exists, do not claim subjective audio quality; provide focused previews for Philip to hear.
 - Verify factual claims and the actual source text before displaying them. Present a paraphrase as a summary, not as an exact quotation; follow applicable quotation limits. Correct misspelled names. Respect the video's chosen spoiler scope.
 
 ## Review visuals

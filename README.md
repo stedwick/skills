@@ -51,8 +51,6 @@ Makes your agent write code in a functional style, in any language: small named 
 
 ## "vlog-editor" skill
 
-I use these three to edit my own videos, so they're built around my setup. Fork them and change them to fit yours.
+I use this to edit my own videos, so it's built around my setup. Fork it and change it to fit yours.
 
-- **vlog-editor**: turns raw camera and mic recordings into a finished video: transcript, editable script, synced cuts, cleaner audio, graphics, thumbnail and 4K export.
-- **review-vlog-editor**: adds structure for book, film and game reviews.
-- **lets-play-editor**: adds gameplay: OBS tracks, facecam, game sound and chess puzzles.
+It turns raw camera, mic, and OBS recordings into a finished video—transcript, editable script, synced cuts, cleaner audio, graphics, thumbnail, and 4K export—with specialized guides in `references/` for **reviews** (book, film, game, and product reviews) and **Let's Plays** (OBS tracks, facecam, game sound, and chess puzzles).

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Let’s Play Editor"
-  short_description: "Edit gameplay and chess puzzle videos"
-  default_prompt: "Use $lets-play-editor to edit my gameplay recording."
